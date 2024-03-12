@@ -1,0 +1,304 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "UltraSoft T-Shirt",
+      "subtitle": "Comfort and Style",
+      "description": "A premium quality t-shirt made from the finest cotton for ultimate comfort and durability.",
+      "category": "women",
+      "price": 19.99,
+      "currency": "USD",
+      "image": "https://example.com/images/ultrasoft-tshirt.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Eco-Friendly Water Bottle",
+      "subtitle": "Stay Hydrated Sustainably",
+      "description": "A reusable water bottle made from eco-friendly materials. Keeps your drink cold for up to 24 hours.",
+      "category": "women",
+      "price": 15.99,
+      "currency": "USD",
+      "image": "https://example.com/images/eco-waterbottle.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Wireless Headphones",
+      "subtitle": "Immersive Audio Experience",
+      "description": "High-quality wireless headphones with noise-cancellation and a long-lasting battery.",
+      "category": "women",
+      "price": 89.99,
+      "currency": "USD",
+      "image": "https://example.com/images/wireless-headphones.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Organic Coffee Beans",
+      "subtitle": "Rich Aroma and Flavor",
+      "description": "Sourced from sustainable farms, these organic coffee beans offer a rich and robust flavor.",
+      "category": "women",
+      "price": 12.99,
+      "currency": "USD",
+      "image": "https://example.com/images/organic-coffee.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "women",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 6,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "women",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 7,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "women",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 8,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "women",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 9,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "women",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 10,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 11,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 12,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    },
+ {
+      "id": 13,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    }
+, {
+      "id": 14,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    }
+, {
+      "id": 15,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    }
+, {
+      "id": 16,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    }
+, {
+      "id": 17,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    }
+, {
+      "id": 18,
+      "title": "Fitness Tracker",
+      "subtitle": "Monitor Your Health",
+      "description": "A versatile fitness tracker that monitors your activity, sleep patterns, and heart rate.",
+      "category": "Men",
+      "price": 49.99,
+      "currency": "USD",
+      "image": "https://example.com/images/fitness-tracker.jpg"
+    }
+,{
+      "id": 19,
+      "title": "Playful Kids' Hoodie",
+      "subtitle": "Cozy and Colorful",
+      "description": "A warm and comfortable hoodie for kids, perfect for chilly days.",
+      "category": "Kids",
+      "price": 29.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-hoodie.jpg"
+    },
+    {
+      "id": 20,
+      "title": "Adventure-Ready Rain Jacket",
+      "subtitle": "Stay Dry and Stylish",
+      "description": "Waterproof and durable, this rain jacket keeps your little ones dry during rainy adventures.",
+      "category": "Kids",
+      "price": 34.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-rainjacket.jpg"
+    },
+    {
+      "id": 21,
+      "title": "Charming Summer Dress",
+      "subtitle": "Light and Breezy",
+      "description": "A delightful summer dress with a fun pattern, perfect for sunny days.",
+      "category": "Kids",
+      "price": 24.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-summerdress.jpg"
+    },
+    {
+      "id": 22,
+      "title": "Denim Overalls",
+      "subtitle": "Trendy and Timeless",
+      "description": "Durable denim overalls, ideal for both playtime and outings.",
+      "category": "Kids",
+      "price": 32.50,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-overalls.jpg"
+    },
+    {
+      "id": 23,
+      "title": "Graphic Tee Collection",
+      "subtitle": "Vibrant and Fun",
+      "description": "A collection of graphic tees with playful designs, made from soft cotton.",
+      "category": "Kids",
+      "price": 15.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-graphictees.jpg"
+    },
+    {
+      "id": 24,
+      "title": "Sporty Joggers",
+      "subtitle": "Comfort for Active Kids",
+      "description": "Soft, stretchy joggers that are perfect for active kids on the go.",
+      "category": "Kids",
+      "price": 20.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-joggers.jpg"
+    },
+    {
+      "id": 25,
+      "title": "Festive Party Dress",
+      "subtitle": "Elegant and Bright",
+      "description": "A beautiful dress for special occasions, featuring bright colors and elegant designs.",
+      "category": "Kids",
+      "price": 40.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-partydress.jpg"
+    },
+    {
+      "id": 26,
+      "title": "Casual Cargo Shorts",
+      "subtitle": "Ready for Adventure",
+      "description": "Versatile and comfortable cargo shorts, great for outdoor activities.",
+      "category": "Kids",
+      "price": 22.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-cargoshorts.jpg"
+    },
+    {
+      "id": 27,
+      "title": "Classic Polo Shirt",
+      "subtitle": "Smart and Comfy",
+      "description": "A smart polo shirt that's as comfortable as it is stylish, suitable for various occasions.",
+      "category": "Kids",
+      "price": 18.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-poloshirt.jpg"
+    },
+  {
+      "id": 28,
+      "title": "Casual Cargo Shorts",
+      "subtitle": "Ready for Adventure",
+      "description": "Versatile and comfortable cargo shorts, great for outdoor activities.",
+      "category": "Kids",
+      "price": 22.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-cargoshorts.jpg"
+    },
+{
+      "id": 29,
+      "title": "Playful Kids' Hoodie",
+      "subtitle": "Cozy and Colorful",
+      "description": "A warm and comfortable hoodie for kids, perfect for chilly days.",
+      "category": "Kids",
+      "price": 29.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-hoodie.jpg"
+    },
+{
+      "id": 30,
+      "title": "Playful Kids' Hoodie",
+      "subtitle": "Cozy and Colorful",
+      "description": "A warm and comfortable hoodie for kids, perfect for chilly days.",
+      "category": "Kids",
+      "price": 29.99,
+      "currency": "USD",
+      "image": "https://example.com/images/kids-hoodie.jpg"
+    }
+ ]
+}
