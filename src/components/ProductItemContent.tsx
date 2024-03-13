@@ -1,11 +1,6 @@
+import { useProductContext } from "../utilities/ProductContext";
+
 interface ProductDetails {
-  image: string;
-  title: string;
-  subtitle: string;
-  price: number;
-  currency: string;
-  description: string;
-  productQuantity: number;
   handleProductQuantityChange: (event: any) => void;
   handleAddToCart: (
     title: string,
@@ -17,34 +12,29 @@ interface ProductDetails {
 }
 
 function ProductItemContent({
-  image,
-  title,
-  subtitle,
-  price,
-  currency,
-  description,
-  productQuantity,
   handleProductQuantityChange,
   handleAddToCart,
 }: ProductDetails) {
+  const product = useProductContext();
+
   return (
     <div className='flex md:flex-row flex-col bg-white  p-2'>
       <div className='flex-1'>
-        <img className='w-full' alt='placeholder image' src={image} />
+        <img className='w-full' alt='placeholder image' src={product.image} />
       </div>
       <div className='p-5 flex-1'>
         <div className='section-border-bottom pb-6'>
-          <h1 className='text-large mt-2'>{title}</h1>
+          <h1 className='text-large mt-2'>{product.title}</h1>
         </div>
         <div className='product-section'>
-          <p className='parag-text'>{subtitle}</p>
+          <p className='parag-text'>{product.subtitle}</p>
         </div>
         <div className='product-section'>
           <p className='text-base leading-4 text-gray-800 font-bold'>
-            Price: {price} {currency}
+            Price: {product.price} {product.currency}
           </p>
         </div>
-        <p className='parag-text pt-3'>{description}</p>
+        <p className='parag-text pt-3'>{product.description}</p>
         <div className='mb-5 mt-2'>
           <label htmlFor='quantity' className='parag-text'>
             Quantity:
@@ -52,7 +42,7 @@ function ProductItemContent({
           <select
             name='quantity'
             id='quantitySelection'
-            value={productQuantity}
+            value={product.quantity}
             onChange={handleProductQuantityChange}
           >
             <option value='1'>1</option>
@@ -64,7 +54,13 @@ function ProductItemContent({
         </div>
         <button
           onClick={() =>
-            handleAddToCart(title, price, productQuantity, currency, image)
+            handleAddToCart(
+              product.title,
+              product.price,
+              product.quantity,
+              product.currency,
+              product.image,
+            )
           }
           className='inline-block text-white bg-gray-800 px-4 py-2 rounded-sm focus:outline-none'
         >

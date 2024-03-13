@@ -2,23 +2,7 @@ import { useState } from "react";
 import ProductItemContent from "./ProductItemContent";
 import { useToast } from "./ui/use-toast";
 
-interface Card {
-  title: string;
-  subtitle: string;
-  description?: string;
-  price: number;
-  currency: string;
-  image: string;
-}
-
-function ProductItem({
-  title,
-  subtitle,
-  description,
-  price,
-  currency,
-  image,
-}: Card) {
+function ProductItem() {
   const [productQuantity, setProductQuantity] = useState(1);
   const { toast } = useToast();
 
@@ -66,13 +50,6 @@ function ProductItem({
   return (
     <div>
       <ProductItemContent
-        image={image}
-        title={title}
-        subtitle={subtitle}
-        price={price}
-        currency={currency}
-        description={description}
-        productQuantity={productQuantity}
         handleProductQuantityChange={handleProductQuantityChange}
         handleAddToCart={handleAddToCart}
       />
