@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "default";
+<<<<<<< HEAD
 @import "cart";
 @import "home";
 @import "products";
@@ -79,3 +80,8 @@
     @apply bg-background text-foreground;
   }
 }
+=======
+@import "home";
+@import "products";
+@import "cart";
+>>>>>>> 02115236e2537c4c69ec9ce15a0450b650990405
