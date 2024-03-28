@@ -3,7 +3,6 @@
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 5px;
   -webkit-box-shadow: 10px 11px 25px -10px rgba(209, 209, 209, 1);
   -moz-box-shadow: 10px 11px 25px -10px rgba(209, 209, 209, 1);
   box-shadow: 10px 11px 25px -10px rgba(209, 209, 209, 1);
@@ -18,6 +17,7 @@
 
   .table-image {
     margin-right: 15px;
+    align-self: center;
 
     img {
       height: 80px;
@@ -27,7 +27,8 @@
 
 .table-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
 
   .table-item-header {
@@ -41,6 +42,18 @@
   .item-total {
     font-weight: 600;
     color: #333;
+  }
+
+  .table-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .table-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   .table-item-details {
@@ -59,4 +72,15 @@
   flex-direction: column;
   flex: 1;
   background-color: #fff;
+}
+
+.delete-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #ff0000;
+
+  span {
+    font-size: 13px;
+  }
 }

@@ -1,8 +1,9 @@
-import { useProductContext } from "../utilities/ProductContext";
+import { useProductContext } from "../contexts/ProductContext";
+import { useState } from "react";
 
 interface ProductDetails {
-  handleProductQuantityChange: (event: any) => void;
   handleAddToCart: (
+    id: number,
     title: string,
     price: number,
     productQuantity: number,
@@ -11,11 +12,15 @@ interface ProductDetails {
   ) => void;
 }
 
-function ProductItemContent({
-  handleProductQuantityChange,
-  handleAddToCart,
-}: ProductDetails) {
+function ProductItemContent({ handleAddToCart }: ProductDetails) {
+  const [productQuantity, setProductQuantity] = useState(1);
   const product = useProductContext();
+
+  const handleProductQuantityChange = (event: any): void => {
+    const selectedQuantity = event.target.value;
+    setProductQuantity(selectedQuantity);
+    console.log(productQuantity);
+  };
 
   return (
     <div className='flex md:flex-row flex-col bg-white  p-2'>
@@ -55,9 +60,10 @@ function ProductItemContent({
         <button
           onClick={() =>
             handleAddToCart(
+              parseInt(product.id),
               product.title,
               product.price,
-              product.quantity,
+              productQuantity,
               product.currency,
               product.image,
             )

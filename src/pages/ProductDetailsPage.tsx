@@ -4,7 +4,7 @@ import axios from "axios";
 import Header from "../components/Header";
 import ProductItem from "../components/ProductItem";
 import ProductItemLoader from "../components/ProductItemLoader";
-import { ProductContext } from "../utilities/ProductContext";
+import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../types/Product.interface";
 
 function ProductDetails() {
