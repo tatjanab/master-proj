@@ -2,29 +2,38 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import CartTable from "../components/CartTable";
 import CartPaymentSummary from "../components/CartPaymentSummary";
-
-useEffect;
+import useCart from "../hooks/useCart";
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
+  const { removeItemFromCart, fetchCart } = useCart();
 
-  function fetchCart() {
-    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(cartItems);
-  }
+  // function fetchCart() {
+  //   let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  //   setCartItems(cartItems);
+  // }
 
   useEffect(() => {
     fetchCart();
   }, []);
 
-  useEffect(() => {
-    if (!cartItems) return;
+  // useEffect(() => {
+  //   if (!cartItems) return;
 
-    const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
-    const finalTotal = parseFloat(cartTotal.toFixed(2));
-    setTotalPayment(finalTotal);
-  }, [cartItems]);
+  //   const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
+  //   const finalTotal = parseFloat(cartTotal.toFixed(2));
+  //   setTotalPayment(finalTotal);
+  // }, [cartItems]);
+
+  // function removeItemFromCart(title: string) {
+  //   const updatedCartItems = cartItems.filter((item) => item.title !== title);
+  //   console.log("Updated cart items:", updatedCartItems);
+  //   localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+  //   console.log("item removed with title" + title);
+  //   setCartItems(updatedCartItems);
+  // }
 
   return (
     <>
@@ -36,8 +45,6 @@ function CartPage() {
           ) : (
             <div className='flex flex-row w-full gap-x-2'>
               <div className='table w-3/4'>
-                <h2 className='text-xl mb-4'>Cart</h2>
-
                 {cartItems.map((cartItem) => (
                   <CartTable
                     key={cartItem.id}
@@ -47,6 +54,7 @@ function CartPage() {
                     currency={cartItem.currency}
                     totalPrice={cartItem.totalPrice}
                     image={cartItem.image}
+                    removeItemFromCart={removeItemFromCart}
                   />
                 ))}
               </div>

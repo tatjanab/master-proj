@@ -4,17 +4,8 @@ import axios from "axios";
 import Header from "../components/Header";
 import ProductItem from "../components/ProductItem";
 import ProductItemLoader from "../components/ProductItemLoader";
-
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  category: string;
-  price: number;
-  currency: string;
-  image: string;
-}
+import { ProductContext } from "../contexts/ProductContext";
+import { Product } from "../types/Product.interface";
 
 function ProductDetails() {
   const [product, setProduct] = useState<Product>(null);
@@ -40,21 +31,12 @@ function ProductDetails() {
 
   return (
     <>
-      <Header />
-      <div className='px-10 bg-gray-100 z-50 w-full h-screen pt-5'>
-        {detailsLoading ? (
-          <ProductItemLoader />
-        ) : (
-          <ProductItem
-            title={product.title}
-            subtitle={product.subtitle}
-            description={product.description}
-            price={product.price}
-            currency={product.currency}
-            image={product.image}
-          />
-        )}
-      </div>
+      <ProductContext.Provider value={product}>
+        <Header />
+        <div className='px-10 bg-gray-100 z-50 w-full h-screen pt-5'>
+          {detailsLoading ? <ProductItemLoader /> : <ProductItem />}
+        </div>
+      </ProductContext.Provider>
     </>
   );
 }
