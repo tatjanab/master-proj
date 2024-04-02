@@ -1,6 +1,19 @@
 .button-main {
-  padding: 10px 20px;
+  padding: 15px 50px;
   border-radius: 50px;
-  background-color: #b191ff;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  &.outline {
+    color: #333;
+    border: 1px solid #333;
+
+    &:hover {
+      background-color: #333;
+      color: #fff;
+      transition: 0.3s all;
+    }
+  }
 }

@@ -3,11 +3,53 @@
 @tailwind utilities;
 
 @import "default";
+@import "navigation";
 @import "cart";
 @import "home";
 @import "products";
 
+@font-face {
+  font-family: "Gotham";
+  src: url("../fonts/Gotham-Medium.otf") format("opentype");
+  font-weight: 500; /* or the appropriate weight for Gotham-Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GothamBook";
+  src: url("../fonts/Gotham-Book.otf") format("opentype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GothamLight";
+  src: url("../fonts/Gotham-Light.otf") format("opentype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+}
+
 @layer base {
+  html {
+    font-family: "GothamBook", sans-serif;
+    color: #333;
+    line-height: 1.8;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: "PlayfairDisplay", serif;
+  }
+
+  ul {
+    li {
+      line-height: 2.2em;
+    }
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

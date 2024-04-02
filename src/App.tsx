@@ -3,7 +3,7 @@ import Homepage from "./pages/Homepage";
 import ProductCategory from "./pages/ProductCategoryPage";
 import ProductDetails from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
-import { Toaster } from "./components/ui/toaster";
+import { Toaster } from "./ui/toaster";
 
 const router = createBrowserRouter([
   { path: "", element: <Homepage /> },
