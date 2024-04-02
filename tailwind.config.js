@@ -12,6 +12,7 @@ module.exports = {
     fontFamily: {
       Gotham: ["Gotham-Medium", "sans-serif"],
       GothamBook: ["Gotham-Book", "sans-serif"],
+      PlayfairDisplay: ["PlayfairDisplay-Regular", "serif"],
     },
     container: {
       center: true,

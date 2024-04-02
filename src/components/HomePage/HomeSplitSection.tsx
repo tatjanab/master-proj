@@ -1,6 +1,6 @@
 function HomeSplitSection() {
   return (
-    <div className='split-section gap-x-10 mb-16'>
+    <div className='split-section gap-x-10 mb-16 px-6'>
       <div className='split-left flex-auto w-8/12'>
         <div className='img-left'></div>
         <div className='section-title'>

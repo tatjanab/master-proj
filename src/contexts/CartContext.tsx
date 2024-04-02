@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { useState } from "react";
-import { useToast } from "../components/ui/use-toast";
+import { useToast } from "../ui/use-toast";
 export const CartContext = createContext(0);
 
 export const useCartContext = () => {
