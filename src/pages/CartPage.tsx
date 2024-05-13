@@ -7,33 +7,17 @@ import useCart from "../hooks/useCart";
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
-  const { removeItemFromCart, fetchCart } = useCart();
-
-  // function fetchCart() {
-  //   let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCartItems(cartItems);
-  // }
+  const { calculateTotal, removeItemFromCart, fetchCart } = useCart(
+    setCartItems,
+    setTotalPayment,
+  );
 
   useEffect(() => {
-    fetchCart();
+    let cartItems = fetchCart();
+    setCartItems(cartItems);
+
+    calculateTotal(cartItems);
   }, []);
-
-  // useEffect(() => {
-  //   if (!cartItems) return;
-
-  //   const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
-  //   const finalTotal = parseFloat(cartTotal.toFixed(2));
-  //   setTotalPayment(finalTotal);
-  // }, [cartItems]);
-
-  // function removeItemFromCart(title: string) {
-  //   const updatedCartItems = cartItems.filter((item) => item.title !== title);
-  //   console.log("Updated cart items:", updatedCartItems);
-  //   localStorage.setItem("cart", JSON.stringify(updatedCartItems));
-
-  //   console.log("item removed with title" + title);
-  //   setCartItems(updatedCartItems);
-  // }
 
   return (
     <>
@@ -41,7 +25,9 @@ function CartPage() {
       <div className='px-2 bg-gray-100 z-50 w-full h-screen pt-5'>
         <div className='flex flex-row w-full gap-x-2'>
           {cartItems.length === 0 ? (
-            <h2>Your shopping cart is empty!</h2>
+            <div className='flex justify-center w-full'>
+              <div className='mt-5'>Your shopping cart is empty!</div>
+            </div>
           ) : (
             <div className='flex flex-row w-full gap-x-2'>
               <div className='table w-3/4'>

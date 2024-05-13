@@ -3,9 +3,6 @@
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
-  -webkit-box-shadow: 10px 11px 25px -10px rgba(209, 209, 209, 1);
-  -moz-box-shadow: 10px 11px 25px -10px rgba(209, 209, 209, 1);
-  box-shadow: 10px 11px 25px -10px rgba(209, 209, 209, 1);
 }
 
 .table-row {
@@ -17,10 +14,9 @@
 
   .table-image {
     margin-right: 15px;
-    align-self: center;
 
     img {
-      height: 80px;
+      height: 120px;
     }
   }
 }
@@ -47,13 +43,12 @@
   .table-left {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
   }
 
   .table-right {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
   }
 
   .table-item-details {
@@ -78,7 +73,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #ff0000;
 
   span {
     font-size: 13px;

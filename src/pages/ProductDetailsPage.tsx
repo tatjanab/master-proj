@@ -33,7 +33,7 @@ function ProductDetails() {
     <>
       <ProductContext.Provider value={product}>
         <Header />
-        <div className='px-10 bg-gray-100 z-50 w-full h-screen pt-5'>
+        <div className='px-10 bg-gray-100 z-50 w-full min-h-screen py-5'>
           {detailsLoading ? <ProductItemLoader /> : <ProductItem />}
         </div>
       </ProductContext.Provider>

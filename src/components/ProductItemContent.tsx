@@ -28,22 +28,19 @@ function ProductItemContent({ handleAddToCart }: ProductDetails) {
         <img className='w-full' alt='placeholder image' src={product.image} />
       </div>
       <div className='p-5 flex-1'>
-        <div className='section-border-bottom pb-6'>
-          <h1 className='text-large mt-2'>{product.title}</h1>
-        </div>
-        <div className='product-section'>
-          <p className='parag-text'>{product.subtitle}</p>
-        </div>
-        <div className='product-section'>
-          <p className='text-base leading-4 text-gray-800 font-bold'>
+        <h1 className='text-large mt-2'>{product.title}</h1>
+        <div className='product-section mb-4'>
+          <p className='text-xs font-bold'>
             Price: {product.price} {product.currency}
           </p>
         </div>
-        <p className='parag-text pt-3'>{product.description}</p>
-        <div className='mb-5 mt-2'>
-          <label htmlFor='quantity' className='parag-text'>
-            Quantity:
-          </label>
+        <div className='product-section mb-3'>
+          <p>{product.subtitle}</p>
+        </div>
+        <h5 className='text-sm mb-2'>Description</h5>
+        <p>{product.description}</p>
+        <div className='my-5 text-sm'>
+          <label htmlFor='quantity'>Quantity:</label>
           <select
             name='quantity'
             id='quantitySelection'
@@ -68,7 +65,7 @@ function ProductItemContent({ handleAddToCart }: ProductDetails) {
               product.image,
             )
           }
-          className='inline-block text-white bg-gray-800 px-4 py-2 rounded-sm focus:outline-none'
+          className='button-main outline px-4 py-2'
         >
           Add to cart
         </button>

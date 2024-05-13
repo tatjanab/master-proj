@@ -10,12 +10,14 @@ function Homepage() {
   return (
     <>
       <Header />
-      <HeroSection />
-      <HomeFeaturedSection />
-      <HomeCta />
-      <HomeCtaSecond />
-      <HomeSplitSection />
-      <Footer />
+      <div className='main-container'>
+        <HeroSection />
+        <HomeFeaturedSection />
+        <HomeCta />
+        <HomeCtaSecond />
+        <HomeSplitSection />
+        <Footer />
+      </div>
     </>
   );
 }
