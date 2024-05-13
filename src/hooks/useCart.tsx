@@ -2,7 +2,7 @@ import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function useCart(setItemsInCart) {
+function useCart(setItemsInCart, setTotalAmount) {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
@@ -78,16 +78,21 @@ function useCart(setItemsInCart) {
     return cartItems;
   }
 
-  function removeItemFromCart(title: string) {
-    const updatedCartItems = cartItems.filter((item) => item.title !== title);
-    console.log("Updated cart items:", updatedCartItems);
-    localStorage.setItem("cart", JSON.stringify(updatedCartItems));
-
-    console.log("item removed with title" + title);
-    setItemsInCart(updatedCartItems);
+  function calculateTotal(items) {
+    const total = items.reduce((acc, item) => acc + item.totalPrice, 0);
+    setTotalAmount(parseFloat(total.toFixed(2)));
   }
 
-  return { handleAddToCart, fetchCart, removeItemFromCart };
+  function removeItemFromCart(title: string) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let updatedCartItems = cart.filter((item) => item.title !== title);
+    localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+    setItemsInCart(updatedCartItems);
+    calculateTotal(updatedCartItems);
+  }
+
+  return { handleAddToCart, fetchCart, calculateTotal, removeItemFromCart };
 }
 
 export default useCart;

@@ -7,40 +7,17 @@ import useCart from "../hooks/useCart";
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
-  const { removeItemFromCart, fetchCart } = useCart(setCartItems);
-
-  // function fetchCart() {
-  //   let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCartItems(cartItems);
-  // }
+  const { calculateTotal, removeItemFromCart, fetchCart } = useCart(
+    setCartItems,
+    setTotalPayment,
+  );
 
   useEffect(() => {
     let cartItems = fetchCart();
     setCartItems(cartItems);
 
-    const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
-    const finalTotal = parseFloat(cartTotal.toFixed(2));
-    setTotalPayment(finalTotal);
+    calculateTotal(cartItems);
   }, []);
-
-  console.log(fetchCart());
-
-  // useEffect(() => {
-  //   if (!cartItems) return;
-
-  //   const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
-  //   const finalTotal = parseFloat(cartTotal.toFixed(2));
-  //   setTotalPayment(finalTotal);
-  // }, [cartItems]);
-
-  // function removeItemFromCart(title: string) {
-  //   const updatedCartItems = cartItems.filter((item) => item.title !== title);
-  //   console.log("Updated cart items:", updatedCartItems);
-  //   localStorage.setItem("cart", JSON.stringify(updatedCartItems));
-
-  //   console.log("item removed with title" + title);
-  //   setCartItems(updatedCartItems);
-  // }
 
   return (
     <>

@@ -41,7 +41,9 @@ function CartTable({
           <p className='item-quantity'>qty: {quantity}</p>
           <div>
             <button
-              onClick={() => removeItemFromCart(title)}
+              onClick={() => {
+                removeItemFromCart(title);
+              }}
               className='delete-btn mt-5'
             >
               <CiCircleRemove className='flex self-center mr-1' />{" "}
