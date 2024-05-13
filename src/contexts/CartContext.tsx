@@ -23,6 +23,7 @@ export const CartProvider = ({ children }) => {
       title: (
         <p>
           <span className='font-bold'>{productTitle} </span> added to the cart
+          <span>Quantity: {productQuantity}</span>
         </p>
       ),
       description: (

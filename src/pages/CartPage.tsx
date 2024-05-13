@@ -7,7 +7,7 @@ import useCart from "../hooks/useCart";
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
-  const { removeItemFromCart, fetchCart } = useCart();
+  const { removeItemFromCart, fetchCart } = useCart(setCartItems);
 
   // function fetchCart() {
   //   let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -15,8 +15,15 @@ function CartPage() {
   // }
 
   useEffect(() => {
-    fetchCart();
+    let cartItems = fetchCart();
+    setCartItems(cartItems);
+
+    const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
+    const finalTotal = parseFloat(cartTotal.toFixed(2));
+    setTotalPayment(finalTotal);
   }, []);
+
+  console.log(fetchCart());
 
   // useEffect(() => {
   //   if (!cartItems) return;
@@ -41,7 +48,9 @@ function CartPage() {
       <div className='px-2 bg-gray-100 z-50 w-full h-screen pt-5'>
         <div className='flex flex-row w-full gap-x-2'>
           {cartItems.length === 0 ? (
-            <h2>Your shopping cart is empty!</h2>
+            <div className='flex justify-center w-full'>
+              <div className='mt-5'>Your shopping cart is empty!</div>
+            </div>
           ) : (
             <div className='flex flex-row w-full gap-x-2'>
               <div className='table w-3/4'>

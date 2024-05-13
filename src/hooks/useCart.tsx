@@ -2,7 +2,7 @@ import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function useCart() {
+function useCart(setItemsInCart) {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
@@ -29,9 +29,10 @@ function useCart() {
   ): void => {
     toast({
       title: (
-        <p>
-          <span className='font-bold'>{productTitle} </span> added to the cart
-        </p>
+        <div>
+          <p className='font-bold'>{productTitle} added to the cart </p>
+          <p>Quantity: {productQuantity}</p>
+        </div>
       ),
       description: (
         <a href='/cart' className='block mt-2 underline underline-offset-4'>
@@ -74,7 +75,7 @@ function useCart() {
 
   function fetchCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(cartItems);
+    return cartItems;
   }
 
   function removeItemFromCart(title: string) {
@@ -83,7 +84,7 @@ function useCart() {
     localStorage.setItem("cart", JSON.stringify(updatedCartItems));
 
     console.log("item removed with title" + title);
-    setCartItems(updatedCartItems);
+    setItemsInCart(updatedCartItems);
   }
 
   return { handleAddToCart, fetchCart, removeItemFromCart };

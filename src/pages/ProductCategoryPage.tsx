@@ -8,12 +8,15 @@ function ProductCategory() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const { products, loading } = useProductsByCategory(categoryId);
 
+  const categoryTitle = categoryId.split("-").join(" ");
+
   return (
     <>
       <Header />
-      <div className='px-10 bg-gray-100 z-50 w-full'>
+      <div className='px-10 z-50 w-full'>
         <h5 className='pt-8'>
-          Shop all products for <span className='italic'>{categoryId}</span>
+          Shop all products for{" "}
+          <span className='font-bold uppercase'>{categoryTitle}</span>
         </h5>
         <p></p>
         <div className='flex min-h-screen flex-wrap justify-items-start pt-10'>

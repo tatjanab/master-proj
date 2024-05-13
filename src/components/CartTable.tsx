@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { TrashIcon } from "lucide-react";
-import { FiTrash } from "react-icons/fi";
+import { CiCircleRemove } from "react-icons/ci";
 
 interface CardTableProps {
   title: string;
@@ -31,23 +30,22 @@ function CartTable({
       <div className='table-item'>
         <div className='table-left'>
           <h2>{title}</h2>
-          <div className='table-item-details'>
-            <p className='item-quantity'>qty: {quantity}</p> &nbsp; | &nbsp;
-            <p className='item-price'>
-              {price} {currency}
-            </p>
-          </div>
+          <p>
+            {price} {currency}
+          </p>
         </div>
         <div className='table-right'>
           <div className='item-total'>
             {totalPrice} {currency}
           </div>
+          <p className='item-quantity'>qty: {quantity}</p>
           <div>
             <button
               onClick={() => removeItemFromCart(title)}
-              className='delete-btn'
+              className='delete-btn mt-5'
             >
-              <FiTrash className='flex self-center mr-1' /> <span>Delete</span>
+              <CiCircleRemove className='flex self-center mr-1' />{" "}
+              <span>Remove</span>
             </button>
           </div>
         </div>
