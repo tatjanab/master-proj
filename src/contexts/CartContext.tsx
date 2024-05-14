@@ -30,8 +30,6 @@ export const CartProvider = ({ children }) => {
   function fetchCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(cartItems);
-
-    console.log("cart items " + cartItems);
   }
 
   // TODO: handle edge case where cart is undefined, important when going back in the browser from the cart page
