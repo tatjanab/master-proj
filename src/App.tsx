@@ -4,6 +4,7 @@ import ProductCategory from "./pages/ProductCategoryPage";
 import ProductDetails from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
 import { Toaster } from "./ui/toaster";
+import { CartProvider } from "./contexts/CartContext";
 
 const router = createBrowserRouter([
   { path: "", element: <Homepage /> },
@@ -15,8 +16,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
-      <Toaster />
+      <CartProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </CartProvider>
     </>
   );
 }

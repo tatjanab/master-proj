@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Header from "../components/Header";
 import CartTable from "../components/CartTable";
 import CartPaymentSummary from "../components/CartPaymentSummary";
-import useCart from "../hooks/useCart";
+import { CartContext } from "../contexts/CartContext";
 
 function CartPage() {
-  const [cartItems, setCartItems] = useState([]);
-  const [totalPayment, setTotalPayment] = useState(0);
-  const { calculateTotal, removeItemFromCart, fetchCart } = useCart(
-    setCartItems,
-    setTotalPayment,
-  );
-
-  useEffect(() => {
-    let cartItems = fetchCart();
-    setCartItems(cartItems);
-
-    calculateTotal(cartItems);
-  }, []);
+  const { cartItems, removeItemFromCart, totalPayment } =
+    useContext(CartContext);
 
   return (
     <>

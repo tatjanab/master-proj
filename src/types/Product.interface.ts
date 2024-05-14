@@ -7,5 +7,5 @@ export interface Product {
   price: number;
   currency: string;
   image?: string;
-  quantity?: number;
+  quantity: number;
 }
