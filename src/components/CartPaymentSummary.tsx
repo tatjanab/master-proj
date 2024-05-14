@@ -1,6 +1,10 @@
 import { CiLock } from "react-icons/ci";
+import { CartContext } from "../contexts/CartContext";
+import { useContext } from "react";
 
-function CartPaymentSummary({ totalPayment }: { totalPayment: number }) {
+function CartPaymentSummary() {
+  const { totalPayment } = useContext(CartContext);
+
   return (
     <div className='cart-summary flex-none'>
       <div className='flex flex-row mb-4'>
@@ -19,7 +23,6 @@ function CartPaymentSummary({ totalPayment }: { totalPayment: number }) {
         <h5 className='text-light'>Estimated total</h5>
         <p>$ {totalPayment}</p>
       </div>
-      <button className='button-main thin mt-5'>Checkout</button>
     </div>
   );
 }

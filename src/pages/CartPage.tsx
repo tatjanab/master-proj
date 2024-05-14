@@ -3,15 +3,15 @@ import Header from "../components/Header";
 import CartTable from "../components/CartTable";
 import CartPaymentSummary from "../components/CartPaymentSummary";
 import { CartContext } from "../contexts/CartContext";
+import { Link } from "react-router-dom";
 
 function CartPage() {
-  const { cartItems, removeItemFromCart, totalPayment } =
-    useContext(CartContext);
+  const { cartItems, removeItemFromCart } = useContext(CartContext);
 
   return (
     <>
       <Header />
-      <div className='px-2 bg-gray-100 z-50 w-full h-screen pt-5'>
+      <div className='px-2 bg-gray-100 z-50 w-full min-h-screen pt-5'>
         <div className='flex flex-row w-full gap-x-2'>
           {cartItems.length === 0 ? (
             <div className='flex justify-center w-full'>
@@ -32,10 +32,13 @@ function CartPage() {
                     removeItemFromCart={removeItemFromCart}
                   />
                 ))}
+                <Link to='/checkout' className='button-main thin mt-5'>
+                  Go to Checkout
+                </Link>
               </div>
 
               <div className='flex grow w-1/4'>
-                <CartPaymentSummary totalPayment={totalPayment} />
+                <CartPaymentSummary />
               </div>
             </div>
           )}
