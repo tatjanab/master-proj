@@ -2,7 +2,7 @@ import { useToast } from "../ui/use-toast";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function useCart(setItemsInCart, setTotalAmount) {
+function useCart() {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
@@ -29,10 +29,9 @@ function useCart(setItemsInCart, setTotalAmount) {
   ): void => {
     toast({
       title: (
-        <div>
-          <p className='font-bold'>{productTitle} added to the cart </p>
-          <p>Quantity: {productQuantity}</p>
-        </div>
+        <p>
+          <span className='font-bold'>{productTitle} </span> added to the cart
+        </p>
       ),
       description: (
         <a href='/cart' className='block mt-2 underline underline-offset-4'>
@@ -75,24 +74,19 @@ function useCart(setItemsInCart, setTotalAmount) {
 
   function fetchCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    return cartItems;
-  }
-
-  function calculateTotal(items) {
-    const total = items.reduce((acc, item) => acc + item.totalPrice, 0);
-    setTotalAmount(parseFloat(total.toFixed(2)));
+    setCartItems(cartItems);
   }
 
   function removeItemFromCart(title: string) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let updatedCartItems = cart.filter((item) => item.title !== title);
+    const updatedCartItems = cartItems.filter((item) => item.title !== title);
+    console.log("Updated cart items:", updatedCartItems);
     localStorage.setItem("cart", JSON.stringify(updatedCartItems));
 
-    setItemsInCart(updatedCartItems);
-    calculateTotal(updatedCartItems);
+    console.log("item removed with title" + title);
+    setCartItems(updatedCartItems);
   }
 
-  return { handleAddToCart, fetchCart, calculateTotal, removeItemFromCart };
+  return { handleAddToCart, fetchCart, removeItemFromCart };
 }
 
 export default useCart;

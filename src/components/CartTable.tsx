@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { CiCircleRemove } from "react-icons/ci";
+import { CartContext } from "../contexts/CartContext";
 
 interface CardTableProps {
   title: string;
@@ -21,6 +22,7 @@ function CartTable({
   removeItemFromCart,
 }: CardTableProps) {
   useEffect(() => {}, [price]);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <div className='table-row'>
