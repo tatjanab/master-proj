@@ -19,8 +19,9 @@ function CartPaymentSummary() {
         <h5 className='text-light'>Shipping</h5>
         <p>Free</p>
       </div>
-      <div className='flex flex-row justify-between mb-2'>
-        <h5 className='text-light'>Estimated total</h5>
+      <hr />
+      <div className='flex flex-row justify-between my-2'>
+        <h5 className='text-light'>Order total</h5>
         <p>$ {totalPayment}</p>
       </div>
     </div>

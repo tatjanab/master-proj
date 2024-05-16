@@ -19,16 +19,18 @@ function ProductItem() {
         <img className='w-full' alt='placeholder image' src={product.image} />
       </div>
       <div className='p-5 flex-1'>
-        <h1 className='text-large mt-2'>{product.title}</h1>
-        <div className='product-section mb-4'>
-          <p className='text-xs font-bold'>
-            Price: {product.price} {product.currency}
-          </p>
-        </div>
-        <div className='product-section mb-3'>
+        <div className='product-section mb-2 uppercase underline'>
           <p>{product.subtitle}</p>
         </div>
-        <h5 className='text-sm mb-2'>Description</h5>
+        <h1 className='text-large mt-2'>{product.title}</h1>
+        <div className='product-section mb-4'>
+          <h2 className='text-md'>
+            {product.price} {product.currency}
+          </h2>
+        </div>
+
+        <hr className='my-5' />
+        <h5 className='text-sm mb-5 uppercase'>Details</h5>
         <p>{product.description}</p>
         <div className='my-5 text-sm'>
           <label htmlFor='quantity'>Quantity:</label>

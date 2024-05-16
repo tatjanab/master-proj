@@ -5,14 +5,14 @@ import ProductDetails from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
 import { Toaster } from "./ui/toaster";
 import { CartProvider } from "./contexts/CartContext";
-import CheckoutPage from "./pages/CheckoutPage";
+import CheckoutWithReactHookForm from "./pages/CheckoutWithReactHookForm";
 
 const router = createBrowserRouter([
   { path: "", element: <Homepage /> },
   { path: "/products/:categoryId", element: <ProductCategory /> },
   { path: "/products/:categoryId/:productId", element: <ProductDetails /> },
   { path: "/cart", element: <CartPage /> },
-  { path: "/checkout", element: <CheckoutPage /> },
+  { path: "/checkout", element: <CheckoutWithReactHookForm /> },
 ]);
 
 function App() {
