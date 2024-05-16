@@ -6,6 +6,7 @@ import ProductItem from "../components/ProductItem";
 import ProductItemLoader from "../components/ProductItemLoader";
 import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../types/Product.interface";
+import RelatedProducts from "../components/RelatedProducts";
 
 function ProductDetails() {
   const [product, setProduct] = useState<Product>(null);
@@ -35,6 +36,9 @@ function ProductDetails() {
         <Header />
         <div className='px-10 bg-gray-100 z-50 w-full min-h-screen py-5'>
           {detailsLoading ? <ProductItemLoader /> : <ProductItem />}
+        </div>
+        <div className='related-products'>
+          {detailsLoading ? <ProductItemLoader /> : <RelatedProducts />}
         </div>
       </ProductContext.Provider>
     </>
