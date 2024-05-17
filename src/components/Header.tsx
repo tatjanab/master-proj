@@ -36,7 +36,7 @@ function Header() {
             <div className='flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5'>
               {categories.map((category) => (
                 <Link
-                  key={category.id}
+                  key={category.name}
                   to={`/products/${category.name}`}
                   className='text-gray-600 pt-6 pb-3 border-b-4 border-transparent hover:border-gray-600'
                 >

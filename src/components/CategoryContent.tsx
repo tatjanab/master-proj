@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CardLoader from "./CardLoader";
+import CardLoader from "./loaders/CardLoader";
 import Card from "./Card";
 
 interface Product {
