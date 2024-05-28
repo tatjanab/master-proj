@@ -4,6 +4,7 @@ import CartTable from "../components/CartTable";
 import CartPaymentSummary from "../components/CartPaymentSummary";
 import { CartContext } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 function CartPage() {
   const { cartItems, removeItemFromCart } = useContext(CartContext);
@@ -14,8 +15,16 @@ function CartPage() {
       <div className='px-2 bg-gray-100 z-50 w-full min-h-screen pt-5'>
         <div className='flex flex-row w-full gap-x-2'>
           {cartItems.length === 0 ? (
-            <div className='flex justify-center w-full'>
-              <div className='mt-5'>Your shopping cart is empty!</div>
+            <div className='flex flex-col justify-center items-center text-center w-full mt-10'>
+              <MdOutlineRemoveShoppingCart className='text-4xl mb-5' />
+              <p className='text-xl'>Cart: 0 items</p>
+              <p className='text-sm mt-5'>Your shopping cart is empty!</p>
+              <p className='text-sm'>
+                Don't miss an opportunity to grab the best offers!
+              </p>
+              <Link to={"/"} className='mt-7 button-main outline'>
+                Shop now!
+              </Link>
             </div>
           ) : (
             <div className='flex flex-row w-full gap-x-2'>

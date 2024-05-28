@@ -1,24 +1,26 @@
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CategoriesContext } from "../contexts/CategoryContext";
 
 function Header() {
-  const [categories, setCategories] = useState([]);
+  const { categories } = useContext(CategoriesContext);
+  // const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    getCategories();
-  }, []);
+  // useEffect(() => {
+  //   getCategories();
+  // }, []);
 
-  const getCategories = async () => {
-    const response = await fetch(
-      "https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/categories.json",
-    );
-    const categories = await response.json();
-    console.log("categories " + categories);
+  // const getCategories = async () => {
+  //   const response = await fetch(
+  //     "https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/categories.json",
+  //   );
+  //   const categories = await response.json();
+  //   console.log("categories " + categories);
 
-    setCategories(categories);
-  };
+  //   setCategories(categories);
+  // };
 
   return (
     <>

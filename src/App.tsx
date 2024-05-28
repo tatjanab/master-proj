@@ -6,6 +6,7 @@ import CartPage from "./pages/CartPage";
 import { Toaster } from "./ui/toaster";
 import { CartProvider } from "./contexts/CartContext";
 import CheckoutWithReactHookForm from "./pages/CheckoutWithReactHookForm";
+import { CategoryProvider } from "./contexts/CategoryContext";
 
 const router = createBrowserRouter([
   { path: "", element: <Homepage /> },
@@ -19,8 +20,10 @@ function App() {
   return (
     <>
       <CartProvider>
-        <RouterProvider router={router} />
-        <Toaster />
+        <CategoryProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </CategoryProvider>
       </CartProvider>
     </>
   );

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CartPaymentSummary from "../components/CartPaymentSummary";
 import Header from "../components/Header";
 
 function CheckoutPage() {

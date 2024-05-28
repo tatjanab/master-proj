@@ -37,7 +37,7 @@ function ProductItem() {
           <select
             name='quantity'
             id='quantitySelection'
-            value={product.quantity}
+            value={productQuantity}
             onChange={handleProductQuantityChange}
           >
             <option value='1'>1</option>
