@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
-  const [productQuantity, setProductQuantity] = useState(1);
+  // const [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
     fetchCart();
@@ -109,10 +109,24 @@ export const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
   }
 
-  const handleProductQuantityChange = (event: any): void => {
-    const selectedQuantity = event.target.value;
-    setProductQuantity(selectedQuantity);
-    console.log(selectedQuantity);
+  const handleProductQuantityChange = (
+    productTitle: string,
+    newQuantity: number,
+  ): void => {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    let existingItemIndex = cart.findIndex(
+      (item) => item.title === productTitle,
+    );
+
+    if (existingItemIndex > -1) {
+      cart[existingItemIndex].quantity = newQuantity;
+      cart[existingItemIndex].totalPrice = parseFloat(
+        (cart[existingItemIndex].price * newQuantity).toFixed(2),
+      );
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCartItems(cart);
   };
 
   return (
@@ -123,6 +137,7 @@ export const CartProvider = ({ children }) => {
         handleAddToCart,
         handleProductQuantityChange,
         removeItemFromCart,
+        // productQuantty,
         totalPayment,
       }}
     >

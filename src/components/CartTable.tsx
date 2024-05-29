@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useContext } from "react";
 import { CiCircleRemove } from "react-icons/ci";
+import { CartContext } from "../contexts/CartContext";
 
 interface CardTableProps {
   title: string;
@@ -9,6 +10,7 @@ interface CardTableProps {
   totalPrice: number;
   image: string;
   removeItemFromCart: any;
+  setItemQuantity: any;
 }
 
 function CartTable({
@@ -19,8 +21,9 @@ function CartTable({
   totalPrice,
   image,
   removeItemFromCart,
+  setItemQuantity,
 }: CardTableProps) {
-  useEffect(() => {}, [price]);
+  // const { handleProductQuantityChange } = useContext(CartContext);
 
   return (
     <div className='table-row'>
@@ -38,7 +41,22 @@ function CartTable({
           <div className='item-total'>
             {totalPrice} {currency}
           </div>
-          <p className='item-quantity'>qty: {quantity}</p>
+          <div className='my-5 text-sm'>
+            <label htmlFor='quantity'>Quantity:</label>
+            <select
+              name='quantity'
+              id='quantitySelection'
+              value={quantity}
+              onChange={(e) => setItemQuantity(title, e.target.value)}
+            >
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+            </select>
+          </div>
+          {/* <p className='item-quantity'>qty: {quantity}</p> */}
           <div>
             <button
               onClick={() => {
