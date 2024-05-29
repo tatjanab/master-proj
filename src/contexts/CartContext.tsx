@@ -13,11 +13,10 @@ export const CartProvider = ({ children }) => {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
-  const [productQuantity, setProductQuantity] = useState(1);
+  // const [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
     fetchCart();
-    console.log("produ quantty " + productQuantity);
   }, []);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const CartProvider = ({ children }) => {
     const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
     const finalTotal = parseFloat(cartTotal.toFixed(2));
     setTotalPayment(finalTotal);
-  }, [cartItems, productQuantity]);
+  }, [cartItems]);
 
   function fetchCart() {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -111,42 +110,23 @@ export const CartProvider = ({ children }) => {
   }
 
   const handleProductQuantityChange = (
-    event: any,
     productTitle: string,
-    productPrice: number,
-    productQuantity: number,
+    newQuantity: number,
   ): void => {
-    const selectedQuantity = event.target.value;
-    setProductQuantity(selectedQuantity);
-    console.log(selectedQuantity);
-
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
     let existingItemIndex = cart.findIndex(
       (item) => item.title === productTitle,
     );
 
     if (existingItemIndex > -1) {
-      let existingQuantity = parseInt(cart[existingItemIndex].quantity, 10);
-      let quantityToAdd = parseInt(productQuantity, 10);
-
-      console.log("Existing Quantity:", existingQuantity); // Verify parsed value
-      console.log("Quantity to Add:", quantityToAdd); // Verify parsed value
-
-      let updatedQuantity = existingQuantity + quantityToAdd;
-      console.log("Updated Quantity:", updatedQuantity); // Check the result of the addition
-
-      cart[existingItemIndex].quantity = updatedQuantity;
+      cart[existingItemIndex].quantity = newQuantity;
       cart[existingItemIndex].totalPrice = parseFloat(
-        (productPrice * updatedQuantity).toFixed(2),
+        (cart[existingItemIndex].price * newQuantity).toFixed(2),
       );
-
-      if (updatedQuantity) {
-        setProductQuantity(updatedQuantity);
-        setTotalPayment(cart[existingItemIndex].totalPrice);
-      }
-
-      console.log("new item " + updatedQuantity);
     }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCartItems(cart);
   };
 
   return (
@@ -157,7 +137,7 @@ export const CartProvider = ({ children }) => {
         handleAddToCart,
         handleProductQuantityChange,
         removeItemFromCart,
-        productQuantity,
+        // productQuantty,
         totalPayment,
       }}
     >

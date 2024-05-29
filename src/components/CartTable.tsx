@@ -10,6 +10,7 @@ interface CardTableProps {
   totalPrice: number;
   image: string;
   removeItemFromCart: any;
+  setItemQuantity: any;
 }
 
 function CartTable({
@@ -20,17 +21,9 @@ function CartTable({
   totalPrice,
   image,
   removeItemFromCart,
+  setItemQuantity,
 }: CardTableProps) {
-  const { handleProductQuantityChange, productQuantity } =
-    useContext(CartContext);
-
-  console.log(handleProductQuantityChange);
-  console.log("quantity " + productQuantity);
-
-  const setProductQuantityChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    title: string,
-  ) => handleProductQuantityChange(e, title);
+  // const { handleProductQuantityChange } = useContext(CartContext);
 
   return (
     <div className='table-row'>
@@ -53,8 +46,8 @@ function CartTable({
             <select
               name='quantity'
               id='quantitySelection'
-              value={productQuantity}
-              onChange={setProductQuantityChange}
+              value={quantity}
+              onChange={(e) => setItemQuantity(title, e.target.value)}
             >
               <option value='1'>1</option>
               <option value='2'>2</option>

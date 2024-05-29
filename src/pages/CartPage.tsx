@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import CartTable from "../components/CartTable";
 import CartPaymentSummary from "../components/CartPaymentSummary";
@@ -7,7 +7,27 @@ import { Link } from "react-router-dom";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 function CartPage() {
-  const { cartItems, removeItemFromCart } = useContext(CartContext);
+  const { cartItems, removeItemFromCart, handleProductQuantityChange } =
+    useContext(CartContext);
+  const [quantities, setQuantities] = useState({});
+
+  useEffect(() => {
+    const initialQuantities = {};
+    cartItems.forEach((item) => {
+      initialQuantities[item.title] = item.quantity;
+    });
+
+    setQuantities(initialQuantities);
+  }, [cartItems]);
+
+  const handleQuantityChange = (title: string, newQuantity: number) => {
+    setQuantities({
+      ...quantities,
+      [title]: newQuantity,
+    });
+
+    handleProductQuantityChange(title, newQuantity);
+  };
 
   return (
     <>
@@ -39,6 +59,7 @@ function CartPage() {
                     totalPrice={cartItem.totalPrice}
                     image={cartItem.image}
                     removeItemFromCart={removeItemFromCart}
+                    setItemQuantity={handleQuantityChange}
                   />
                 ))}
                 <Link to='/checkout' className='button-main thin mt-5'>
