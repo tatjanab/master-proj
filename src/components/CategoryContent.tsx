@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import CardLoader from "./loaders/CardLoader";
 import Card from "./Card";
 
-interface Product {
+type Product = {
   id: string;
   title: string;
   subtitle: string;
@@ -11,13 +11,13 @@ interface Product {
   price: number;
   currency: string;
   image: string;
-}
+};
 
-interface CategoryContentProps {
+type CategoryContentProps = {
   loading: boolean;
   products: Product[];
   categoryId: string;
-}
+};
 
 function CategoryContent({
   loading,

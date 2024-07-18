@@ -4,7 +4,12 @@ import { useContext } from "react";
 import { CategoriesContext } from "../contexts/CategoryContext";
 
 function Header() {
-  const { categories } = useContext(CategoriesContext);
+  const context = useContext(CategoriesContext);
+
+  if (!context) {
+    return <div>Loading...</div>;
+  }
+  const { categories } = context;
 
   return (
     <>

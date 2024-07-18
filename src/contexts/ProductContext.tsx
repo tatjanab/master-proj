@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { Product } from "../types/Product.interface";
+import { Product } from "../types/ProductType";
 
 export const ProductContext = createContext<Product | undefined>(undefined);
 

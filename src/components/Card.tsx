@@ -1,11 +1,11 @@
-interface CardProps {
+type CardProps = {
   title: string;
   subtitle?: string;
   description?: string;
   price: number;
   currency: string;
   image: string;
-}
+};
 
 let Card = ({ title, price, currency, image }: CardProps) => {
   return (

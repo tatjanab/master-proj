@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CiCircleRemove } from "react-icons/ci";
 import { CartContext } from "../contexts/CartContext";
 
-interface CardTableProps {
+type CardTableProps = {
   title: string;
   price: number;
   currency: string;
@@ -11,7 +11,7 @@ interface CardTableProps {
   image: string;
   removeItemFromCart: any;
   setItemQuantity: any;
-}
+};
 
 function CartTable({
   title,

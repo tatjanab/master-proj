@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Product } from "../types/Product.interface";
+import { Product } from "../types/ProductType";
 import {
   Carousel,
   CarouselContent,
@@ -11,7 +11,7 @@ import {
 
 function RelatedProducts() {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const { categoryId, productId } = useParams<{
+  const { categoryId, productId = "1" } = useParams<{
     categoryId: string;
     productId: string;
   }>();
@@ -29,8 +29,8 @@ function RelatedProducts() {
     console.log("id " + categoryId);
 
     const related = data.filter(
-      (product) =>
-        product.category.toLowerCase() === categoryId.toLowerCase() &&
+      (product: Product) =>
+        product.category.toLowerCase() === categoryId?.toLowerCase() &&
         parseInt(product.id) !== parseInt(productId),
     );
 

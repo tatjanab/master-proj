@@ -4,7 +4,7 @@ import { CartContext } from "../contexts/CartContext";
 function CartIcon() {
   const { cartItems } = useContext(CartContext);
 
-  const totalItemsInCart = cartItems.reduce((acc, product) => {
+  const totalItemsInCart = cartItems.reduce((acc: number, product) => {
     return parseInt(acc + (product.quantity || 0));
   }, 0);
 
