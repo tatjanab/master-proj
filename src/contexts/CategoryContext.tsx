@@ -1,12 +1,31 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
-export const CategoriesContext = createContext(undefined);
+type CategoryType = {
+  name: string;
+};
+
+type CategoriesContextType = {
+  categories: CategoryType[];
+};
+
+export const CategoriesContext = createContext<
+  CategoriesContextType | undefined
+>(undefined);
 
 export const useCategoriesContext = () => {
   useContext(CategoriesContext);
 };
+type CartProviderProps = {
+  children: ReactNode;
+};
 
-export const CategoryProvider = ({ children }) => {
+export const CategoryProvider = ({ children }: CartProviderProps) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {

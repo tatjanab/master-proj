@@ -1,17 +1,34 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useToast } from "../ui/use-toast";
+import {
+  CartContextType,
+  handleAddToCart,
+  handleProductQuantityChange,
+  CartItem,
+} from "../types/CartContextType";
+
+type CartProviderProps = {
+  children: ReactNode;
+};
 
 // Create the context
-export const CartContext = createContext(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined,
+);
 
 export const useCartContext = () => {
   useContext(CartContext);
 };
-
 // Provider component
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({ children }: CartProviderProps) => {
   const { toast } = useToast();
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPayment, setTotalPayment] = useState(0);
   // const [productQuantity, setProductQuantity] = useState(1);
 
@@ -27,20 +44,21 @@ export const CartProvider = ({ children }) => {
     setTotalPayment(finalTotal);
   }, [cartItems]);
 
-  function fetchCart() {
-    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  function fetchCart(): void {
+    const storedCart = localStorage.getItem("cart");
+    let cartItems: CartItem[] = storedCart ? JSON.parse(storedCart) : [];
     setCartItems(cartItems);
   }
 
   // TODO: handle edge case where cart is undefined, important when going back in the browser from the cart page
-  const handleAddToCart = (
-    productId: number,
-    productTitle: string,
-    productPrice: number,
-    productQuantity: number,
-    productCurrency: string,
-    productImageUrl: string,
-  ): void => {
+  const handleAddToCart: handleAddToCart = (
+    productId,
+    productTitle,
+    productPrice,
+    productQuantity,
+    productCurrency,
+    productImageUrl,
+  ) => {
     toast({
       title: (
         <div>
@@ -58,7 +76,7 @@ export const CartProvider = ({ children }) => {
     });
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
     let existingItemIndex = cart.findIndex(
-      (item) => item.title === productTitle,
+      (item: CartItem) => item.title === productTitle,
     );
 
     if (existingItemIndex > -1) {
@@ -109,10 +127,10 @@ export const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
   }
 
-  const handleProductQuantityChange = (
-    productTitle: string,
-    newQuantity: number,
-  ): void => {
+  const handleProductQuantityChange: handleProductQuantityChange = (
+    productTitle,
+    newQuantity,
+  ) => {
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
     let existingItemIndex = cart.findIndex(
       (item) => item.title === productTitle,
