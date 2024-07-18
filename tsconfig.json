@@ -4,7 +4,6 @@
     "paths": {
       "@root/*": ["./*"]
     },
-    "plugins": [{ "name": "next" }],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -25,19 +24,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-
-    /* NEXTJS */
-    "esModuleInterop": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true
+    "strictNullChecks": true
   },
-  "include": [
-    "src",
-    "next.config.mjs",
-    "./dist/types/**/*.ts",
-    "./next-env.d.ts"
-  ],
+  "include": ["src", "./dist/types/**/*.ts"],
   "exclude": ["./node_modules"]
 }
