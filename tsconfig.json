@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@root/*": ["./*"]
+      "@*": ["./*"]
     },
     "target": "ES5",
     "useDefineForClassFields": true,
@@ -11,15 +11,13 @@
     "module": "esnext",
     "skipLibCheck": true,
     "esModuleInterop": true,
-
     /* Bundler mode */
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-
+    "jsx": "preserve",
     /* Linting */
     "strict": false,
     "noUnusedLocals": true,
@@ -41,6 +39,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./dist/types/**/*.ts"
-  ],
+, "app/layout.tsx"  ],
   "exclude": ["node_modules"]
 }

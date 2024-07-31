@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { CartProvider } from "@contexts/CartContext";
+import { CategoryProvider } from "@contexts/CategoryContext";
+import "@styles/main.scss";
 
 export const metadata: Metadata = {
   title: "ILS furniture",
@@ -13,7 +16,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <div id='root'>{children}</div>
+        <CartProvider>
+          <CategoryProvider>
+            <div id='root'>{children}</div>
+          </CategoryProvider>
+        </CartProvider>
       </body>
     </html>
   );

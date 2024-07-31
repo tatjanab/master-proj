@@ -64,8 +64,8 @@ function CartTable({
               }}
               className='delete-btn mt-5'
             >
-              <CiCircleRemove className='flex self-center mr-1' />{" "}
-              <span>Remove</span>
+              <CiCircleRemove className='flex self-center mr-1 text-red-600' />{" "}
+              <span className='text-red-600 font-bold'>Remove</span>
             </button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+"use client";
 import {
   createContext,
   useContext,
@@ -14,15 +15,21 @@ type CategoriesContextType = {
   categories: CategoryType[];
 };
 
+type CartProviderProps = {
+  children: ReactNode;
+};
+
 export const CategoriesContext = createContext<
   CategoriesContextType | undefined
 >(undefined);
-
 export const useCategoriesContext = () => {
-  useContext(CategoriesContext);
-};
-type CartProviderProps = {
-  children: ReactNode;
+  const context = useContext(CategoriesContext);
+  if (!context) {
+    throw new Error(
+      "useCategoriesContext must be used within a CategoryProvider",
+    );
+  }
+  return context;
 };
 
 export const CategoryProvider = ({ children }: CartProviderProps) => {
