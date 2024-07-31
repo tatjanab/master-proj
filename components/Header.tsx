@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import CartIcon from "./CartIcon";
 import { useContext } from "react";
-import { CategoriesContext } from "../contexts/CategoryContext";
+import { CategoriesContext } from "@contexts/CategoryContext";
 
 function Header() {
   const context = useContext(CategoriesContext);
@@ -16,7 +18,7 @@ function Header() {
       <header className='drop-shadow-sm w-full bg-white text-xs font-bold z-20'>
         <nav className='w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between'>
           <div className='flex items-center justify-between'>
-            <Link className='flex-none text-xl font-semibold ' to='/'>
+            <Link className='flex-none text-xl font-semibold ' href='/'>
               ILS
             </Link>
           </div>
@@ -28,7 +30,7 @@ function Header() {
               {categories.map((category) => (
                 <Link
                   key={category.name}
-                  to={`/products/${category.name}`}
+                  href={`/products/${category.name}`}
                   className='text-gray-600 pt-6 pb-3 border-b-4 border-transparent hover:border-gray-600'
                 >
                   {category.name.split("-").join(" ")}
@@ -37,7 +39,7 @@ function Header() {
               <div className='cart-link pr-4'>
                 <CartIcon />
                 <Link
-                  to='/cart'
+                  href='/cart'
                   className='cart-icon text-gray-600 hover:text-gray-400'
                 ></Link>
               </div>

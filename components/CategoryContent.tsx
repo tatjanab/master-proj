@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import CardLoader from "./loaders/CardLoader";
 import Card from "./Card";
 
@@ -35,7 +35,7 @@ function CategoryContent({
               key={product.id}
               className='lg:w-1/4 md:w-1/2 w-full px-1 mb-2'
             >
-              <Link to={`/products/${categoryId}/${product.id}`}>
+              <Link href={`/products/${categoryId}/${product.id}`}>
                 <Card
                   title={product.title}
                   subtitle={product.subtitle}
