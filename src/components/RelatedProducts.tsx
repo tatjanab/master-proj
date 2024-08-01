@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { Product } from "../types/ProductType";
 import {
@@ -8,17 +9,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import CardLoader from "./loaders/CardLoader";
 
 function RelatedProducts() {
-  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  // const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const { categoryId, productId = "1" } = useParams<{
     categoryId: string;
     productId: string;
   }>();
 
-  useEffect(() => {
-    getRelatedProducts();
-  }, [categoryId, productId]);
+  // useEffect(() => {
+  //   getRelatedProducts();
+  // }, [categoryId, productId]);
 
   const getRelatedProducts = async () => {
     const response = await fetch(
@@ -28,14 +30,30 @@ function RelatedProducts() {
     const data = await response.json();
     console.log("id " + categoryId);
 
-    const related = data.filter(
+    console.log("related products");
+
+    return data.filter(
       (product: Product) =>
         product.category.toLowerCase() === categoryId?.toLowerCase() &&
         parseInt(product.id) !== parseInt(productId),
     );
 
-    setRelatedProducts(related);
+    // setRelatedProducts(related);
   };
+
+  const {
+    data: relatedProducts,
+    isLoading,
+    isError,
+  } = useQuery<Product[]>({
+    queryFn: getRelatedProducts,
+    queryKey: ["related-products"],
+    staleTime: Infinity, //data will never be considered stale
+  });
+
+  if (isError) {
+    return <h2>No related products found</h2>;
+  }
 
   return (
     <div className='w-full'>
@@ -48,7 +66,7 @@ function RelatedProducts() {
           </div>
         </div>
         <CarouselContent className='flex flex-row'>
-          {relatedProducts.map((product) => (
+          {relatedProducts?.map((product) => (
             <CarouselItem className='basis-1/4' key={product.id}>
               <Link to={`/products/${categoryId}/${product.id}`}>
                 <div>
