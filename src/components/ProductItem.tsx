@@ -2,9 +2,9 @@ import { useProductContext } from "../contexts/ProductContext";
 import { CartContext } from "../contexts/CartContext";
 import { useContext, useState } from "react";
 
-function ProductItem() {
+function ProductItem({ product }) {
   const [productQuantity, setProductQuantity] = useState(1);
-  const product = useProductContext();
+  // const product = useProductContext();
   const { handleAddToCart } = useContext(CartContext);
 
   const handleProductQuantityChange = (event: any): void => {

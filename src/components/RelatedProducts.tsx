@@ -9,18 +9,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import CardLoader from "./loaders/CardLoader";
 
 function RelatedProducts() {
-  // const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const { categoryId, productId = "1" } = useParams<{
     categoryId: string;
     productId: string;
   }>();
-
-  // useEffect(() => {
-  //   getRelatedProducts();
-  // }, [categoryId, productId]);
 
   const getRelatedProducts = async () => {
     const response = await fetch(
@@ -37,15 +31,9 @@ function RelatedProducts() {
         product.category.toLowerCase() === categoryId?.toLowerCase() &&
         parseInt(product.id) !== parseInt(productId),
     );
-
-    // setRelatedProducts(related);
   };
 
-  const {
-    data: relatedProducts,
-    isLoading,
-    isError,
-  } = useQuery<Product[]>({
+  const { data: relatedProducts, isError } = useQuery<Product[]>({
     queryFn: getRelatedProducts,
     queryKey: ["related-products"],
     staleTime: Infinity, //data will never be considered stale
