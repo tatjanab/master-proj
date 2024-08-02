@@ -15,12 +15,16 @@ function useProductsByCategory(categoryId: string) {
         product.category.toLowerCase() === categoryId.toLowerCase(),
     );
 
+    console.log("get category");
+
     return filteredProducts;
   };
 
+  // TODO:data will never be considered stale because of staleTime param, check if you change the title of the products
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", categoryId],
     queryFn: fetchProducts,
+    staleTime: Infinity,
   });
 
   return { products, isLoading };
