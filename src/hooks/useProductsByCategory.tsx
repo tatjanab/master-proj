@@ -1,48 +1,33 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
-interface Product {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  category: string;
-  price: number;
-  currency: string;
-  image: string;
-}
+import { useQuery } from "@tanstack/react-query";
+import { Product } from "../types/ProductType";
 
 function useProductsByCategory(categoryId: string) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  // useEffect will be replaced with useQuery because of the easy error and loading handlers
+  const fetchProducts = async (): Promise<Product[]> => {
+    const response = await fetch(
+      "https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
+    );
 
-  const fetchProducts = () => {
-    setLoading(true); // Reset the loading state, important because otherwise navigating between different categoryId routes will not display the loader correcty and will result in bad UX
+    const data = await response.json();
 
-    axios
-      .get<Product[]>(
-        "https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
-      )
-      .then((response) => {
-        const filteredProducts = response.data.filter(
-          (product) =>
-            product.category.toLowerCase() === categoryId.toLowerCase(),
-        );
+    const filteredProducts = data.filter(
+      (product: Product) =>
+        product.category.toLowerCase() === categoryId.toLowerCase(),
+    );
 
-        setProducts(filteredProducts);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Unable to fetch products with the category", error);
-        setLoading(false);
-      });
+    console.log("get category");
+
+    return filteredProducts;
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, [categoryId]);
+  // TODO:data will never be considered stale because of staleTime param, check if you change the title of the products
+  const { data: products, isLoading } = useQuery({
+    queryKey: ["products", categoryId],
+    queryFn: fetchProducts,
+    staleTime: Infinity,
+  });
 
-  return { products, loading };
+  return { products, isLoading };
 }
 
 export default useProductsByCategory;

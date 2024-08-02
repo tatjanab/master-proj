@@ -1,47 +1,53 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Header from "../components/Header";
 import ProductItem from "../components/ProductItem";
 import ProductItemLoader from "../components/ProductItemLoader";
-import { ProductContext } from "../contexts/ProductContext";
-import { Product } from "../types/Product.interface";
+import { Product } from "../types/ProductType.ts";
 import RelatedProducts from "../components/RelatedProducts";
 import RelatedProductLoader from "../components/loaders/RelatedProductLoader";
+import { useQuery } from "@tanstack/react-query";
 
 function ProductDetails() {
-  const [product, setProduct] = useState<Product>(null);
-  const { productId } = useParams();
-  const [detailsLoading, setDetailsLoading] = useState(true);
+  const { productId } = useParams<{ productId: string }>();
 
-  const getProductDetails = (productId: string) => {
-    setDetailsLoading(true); // reset loading state
+  const getProductDetails = async (productId: string) => {
+    const response = await fetch(
+      `https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/products/${productId}.json`,
+    );
 
-    axios
-      .get<Product>(
-        `https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/products/${productId}.json`,
-      )
-      .then((response) => {
-        setProduct(response.data);
-        setDetailsLoading(false);
-      });
+    const data = await response.json();
+
+    return data;
   };
 
-  useEffect(() => {
-    getProductDetails(productId);
-  }, [productId]);
+  const {
+    data: productDetails,
+    isLoading,
+    isError,
+  } = useQuery<Product>({
+    queryKey: ["product", productId],
+    queryFn: () => getProductDetails(productId!),
+    staleTime: Infinity,
+    enabled: !!productId, // ensure the query runs only when productId is available
+  });
+
+  if (isError) {
+    return <div>Error fetching the product detials, please try again!</div>;
+  }
 
   return (
     <>
-      <ProductContext.Provider value={product}>
-        <Header />
-        <div className='px-10 bg-gray-100 z-50 w-full py-8'>
-          {detailsLoading ? <ProductItemLoader /> : <ProductItem />}
-        </div>
-        <div className='px-10 py-5 mb-2'>
-          {detailsLoading ? <RelatedProductLoader /> : <RelatedProducts />}
-        </div>
-      </ProductContext.Provider>
+      <Header />
+      <div className='px-10 bg-gray-100 z-50 w-full py-8'>
+        {isLoading ? (
+          <ProductItemLoader />
+        ) : (
+          <ProductItem product={productDetails} />
+        )}
+      </div>
+      <div className='px-10 py-5 mb-2'>
+        {isLoading ? <RelatedProductLoader /> : <RelatedProducts />}
+      </div>
     </>
   );
 }

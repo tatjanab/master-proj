@@ -81,7 +81,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
     if (existingItemIndex > -1) {
       let existingQuantity = parseInt(cart[existingItemIndex].quantity, 10);
-      let quantityToAdd = parseInt(productQuantity, 10);
+      let quantityToAdd =
+        typeof productQuantity === "string"
+          ? parseInt(productQuantity, 10)
+          : productQuantity;
 
       console.log("Existing Quantity:", existingQuantity); // Verify parsed value
       console.log("Quantity to Add:", quantityToAdd); // Verify parsed value
@@ -133,7 +136,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   ) => {
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
     let existingItemIndex = cart.findIndex(
-      (item) => item.title === productTitle,
+      (item: CartItem) => item.title === productTitle,
     );
 
     if (existingItemIndex > -1) {

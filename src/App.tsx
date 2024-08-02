@@ -7,6 +7,7 @@ import { Toaster } from "./ui/toaster";
 import { CartProvider } from "./contexts/CartContext";
 import CheckoutWithReactHookForm from "./pages/CheckoutWithReactHookForm";
 import { CategoryProvider } from "./contexts/CategoryContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   { path: "", element: <Homepage /> },
@@ -16,15 +17,19 @@ const router = createBrowserRouter([
   { path: "/checkout", element: <CheckoutWithReactHookForm /> },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
     <>
-      <CartProvider>
-        <CategoryProvider>
-          <RouterProvider router={router} />
-          <Toaster />
-        </CategoryProvider>
-      </CartProvider>
+      <QueryClientProvider client={queryClient}>
+        <CartProvider>
+          <CategoryProvider>
+            <RouterProvider router={router} />
+            <Toaster />
+          </CategoryProvider>
+        </CartProvider>
+      </QueryClientProvider>
     </>
   );
 }

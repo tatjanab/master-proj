@@ -6,9 +6,9 @@ import CategoryContent from "../components/CategoryContent";
 
 function ProductCategory() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const { products, loading } = useProductsByCategory(categoryId);
+  const { products, isLoading } = useProductsByCategory(categoryId);
 
-  const categoryTitle = categoryId.split("-").join(" ");
+  const categoryTitle = categoryId?.split("-").join(" ");
 
   return (
     <>
@@ -21,7 +21,7 @@ function ProductCategory() {
         <p></p>
         <div className='flex min-h-screen flex-wrap justify-items-start pt-10'>
           <CategoryContent
-            loading={loading}
+            loading={isLoading}
             products={products}
             categoryId={categoryId}
           />
