@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HeroSection() {
   return (
     <>
@@ -5,7 +7,9 @@ function HeroSection() {
         <div className='hero-content'>
           <h1 className='text-6xl mb-2'>High design</h1>
           <p>Shop pieces made to last</p>
-          <button className='button-main mt-2'>Shop living room</button>
+          <Link className='button-main mt-2' to={"/products/living-room"}>
+            Shop living room
+          </Link>
         </div>
       </div>
     </>
