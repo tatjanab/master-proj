@@ -6,9 +6,17 @@ import CategoryContent from "../components/CategoryContent";
 
 function ProductCategory() {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const { products, isLoading } = useProductsByCategory(categoryId);
+  const { products, isLoading, isError } = useProductsByCategory(categoryId);
 
   const categoryTitle = categoryId?.split("-").join(" ");
+
+  if (isError) {
+    return (
+      <div>
+        <h2>Error retrieving products. Try to refresh the page.</h2>
+      </div>
+    );
+  }
 
   return (
     <>

@@ -8,6 +8,7 @@ import { CartProvider } from "./contexts/CartContext";
 import CheckoutWithReactHookForm from "./pages/CheckoutWithReactHookForm";
 import { CategoryProvider } from "./contexts/CategoryContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   { path: "", element: <Homepage /> },
@@ -29,6 +30,10 @@ function App() {
             <Toaster />
           </CategoryProvider>
         </CartProvider>
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          buttonPosition='bottom-right'
+        />
       </QueryClientProvider>
     </>
   );
