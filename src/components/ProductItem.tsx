@@ -1,7 +1,8 @@
 import { CartContext } from "../contexts/CartContext";
 import { useContext, useState } from "react";
+import { memo } from "react";
 
-function ProductItem({ product }) {
+const ProductItem = memo(function ProductItem({ product }) {
   const [productQuantity, setProductQuantity] = useState(1);
   // const product = useProductContext();
   const { handleAddToCart } = useContext(CartContext);
@@ -64,6 +65,6 @@ function ProductItem({ product }) {
       </div>
     </div>
   );
-}
+});
 
 export default ProductItem;
