@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Header from "../components/Header";
 
 type FormFields = {

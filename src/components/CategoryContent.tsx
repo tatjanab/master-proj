@@ -17,20 +17,25 @@ type CategoryContentProps = {
   loading: boolean;
   products: Product[];
   categoryId: string;
+  searchQuery: string;
 };
 
 function CategoryContent({
   loading,
   products,
   categoryId,
+  searchQuery,
 }: CategoryContentProps) {
+  let productsList: Product[] = products?.filter((product) =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
   return (
     <>
       {loading
         ? Array.from({ length: 8 }).map((_, index) => (
             <CardLoader key={index} />
           ))
-        : products.map((product) => (
+        : productsList.map((product) => (
             <div
               key={product.id}
               className='lg:w-1/4 md:w-1/2 w-full px-1 mb-2'

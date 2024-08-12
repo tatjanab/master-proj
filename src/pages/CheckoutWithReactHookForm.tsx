@@ -27,7 +27,9 @@ function CheckoutWithReactHookForm() {
   // isSubmitting, reset, everything is coming from react hook forms
   // need to add the noValidate attr to the form to disable the natve browser validation
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     console.log("submitting");
   };
 
@@ -163,16 +165,11 @@ function CheckoutWithReactHookForm() {
                   <input
                     {...register("email", {
                       required: "Email address is required",
-                      pattern: {
-                        value:
-                          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                        message: "Enter a valid email address",
-                      },
                     })}
-                    name='phone'
+                    name='email'
                     type='text'
                     className={`border w-full ${
-                      errors.city ? "border-red-500" : "border-gray-500"
+                      errors.email ? "border-red-500" : "border-gray-500"
                     } `}
                   />
                   {errors.email && (
@@ -186,7 +183,7 @@ function CheckoutWithReactHookForm() {
                 type='submit'
                 className='button-main thin disabled:bg-slate-200 disabled:text-black mt-5'
               >
-                Submit
+                {isSubmitting ? "Loading..." : "Submit"}
               </button>
             </form>
           </div>
