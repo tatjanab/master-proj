@@ -30,7 +30,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPayment, setTotalPayment] = useState(0);
-  // const [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
     fetchCart();

@@ -10,13 +10,13 @@ import { useQuery } from "@tanstack/react-query";
 function ProductDetails() {
   const { productId } = useParams<{ productId: string }>();
 
+
   const getProductDetails = async (productId: string) => {
     const response = await fetch(
       `https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/products/${productId}.json`,
     );
 
     const data = await response.json();
-
     return data;
   };
 

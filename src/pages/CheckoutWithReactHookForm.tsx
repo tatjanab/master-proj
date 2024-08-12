@@ -1,8 +1,18 @@
 import { useForm } from "react-hook-form";
-import type { FieldValues } from "react-hook-form";
+import type { FieldValues, SubmitHandler } from "react-hook-form";
 import CartPaymentSummary from "../components/CartPaymentSummary";
 import { CiLock } from "react-icons/ci";
 import { Link } from "react-router-dom";
+
+type FormFields = {
+  firstName: string;
+  lastName: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  phone: number;
+  email: string;
+};
 
 function CheckoutWithReactHookForm() {
   const {
@@ -17,10 +27,10 @@ function CheckoutWithReactHookForm() {
   // isSubmitting, reset, everything is coming from react hook forms
   // need to add the noValidate attr to the form to disable the natve browser validation
 
-  const onSubmit = async (data: FieldValues) => {
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    reset();
+    console.log("submitting");
   };
 
   return (
@@ -44,7 +54,7 @@ function CheckoutWithReactHookForm() {
                   <label htmlFor='firstName'>First Name</label>
                   <input
                     {...register("firstName", {
-                      required: "Name is required",
+                      required: "First name is required",
                     })}
                     type='text'
                     name='firstName'
@@ -53,7 +63,9 @@ function CheckoutWithReactHookForm() {
                     } `}
                   />
                   {errors.firstName && (
-                    <div className='error-message text-red-500'>{`${errors.firstName.message}`}</div>
+                    <div className='error-message text-red-500'>
+                      {`${errors.firstName?.message}`}
+                    </div>
                   )}
                 </div>
                 <div className='input-item'>
@@ -97,6 +109,10 @@ function CheckoutWithReactHookForm() {
                   <input
                     {...register("zipCode", {
                       required: "Zip code is required",
+                      minLength: {
+                        value: 5,
+                        message: "Zip code must be at least 5 characters long",
+                      },
                     })}
                     name='zipCode'
                     type='text'
@@ -133,7 +149,7 @@ function CheckoutWithReactHookForm() {
                       required: "Phone number is required",
                     })}
                     name='phone'
-                    type='text'
+                    type='number'
                     className={`border w-full ${
                       errors.phone ? "border-red-500" : "border-gray-500"
                     } `}
@@ -150,10 +166,10 @@ function CheckoutWithReactHookForm() {
                     {...register("email", {
                       required: "Email address is required",
                     })}
-                    name='phone'
+                    name='email'
                     type='text'
                     className={`border w-full ${
-                      errors.city ? "border-red-500" : "border-gray-500"
+                      errors.email ? "border-red-500" : "border-gray-500"
                     } `}
                   />
                   {errors.email && (
@@ -167,7 +183,7 @@ function CheckoutWithReactHookForm() {
                 type='submit'
                 className='button-main thin disabled:bg-slate-200 disabled:text-black mt-5'
               >
-                Submit
+                {isSubmitting ? "Loading..." : "Submit"}
               </button>
             </form>
           </div>

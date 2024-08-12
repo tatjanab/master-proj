@@ -1,4 +1,3 @@
-import { useProductContext } from "../contexts/ProductContext";
 import { CartContext } from "../contexts/CartContext";
 import { useContext, useState } from "react";
 
