@@ -27,7 +27,7 @@ function CategoryContent({
   searchQuery,
 }: CategoryContentProps) {
   let productsList: Product[] = products?.filter((product) =>
-    product.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    product.title.toLowerCase().includes(searchQuery?.toLowerCase()),
   );
   return (
     <>
