@@ -10,14 +10,6 @@ function ProductCategory() {
 
   const categoryTitle = categoryId?.split("-").join(" ");
 
-  if (isError) {
-    return (
-      <div>
-        <h2>Error retrieving products. Try to refresh the page.</h2>
-      </div>
-    );
-  }
-
   return (
     <>
       <Header />
@@ -36,6 +28,7 @@ function ProductCategory() {
         <div className='flex min-h-screen flex-wrap justify-items-start pt-10'>
           <CategoryContent
             loading={isLoading}
+            error={isError}
             products={products}
             categoryId={categoryId}
             searchQuery={search}

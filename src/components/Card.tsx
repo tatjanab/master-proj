@@ -1,25 +1,22 @@
+import { Product } from "../types/ProductType";
+
 type CardProps = {
-  title: string;
-  subtitle?: string;
-  description?: string;
-  price: number;
-  currency: string;
-  image: string;
+  product: Product;
 };
 
-let Card = ({ title, price, currency, image }: CardProps) => {
+let Card = ({ product }: CardProps) => {
   return (
     <>
       <div>
         <div className='cursor-pointer bg-white'>
           <img
             className='w-full mb-2 object-cover object-center'
-            src={image}
+            src={product.image}
             alt='product'
           />
-          <p className='font-bold text-xs text-gray-500'>{title}</p>
+          <p className='font-bold text-xs text-gray-500'>{product.title}</p>
           <p className='mb-4 text-xs font-semibold text-gray-800'>
-            {currency} {price}
+            {product.currency} {product.price}
           </p>
         </div>
       </div>
