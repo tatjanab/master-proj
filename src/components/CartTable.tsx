@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { CiCircleRemove } from "react-icons/ci";
-import { CartContext } from "../contexts/CartContext";
 
 type CardTableProps = {
   title: string;
