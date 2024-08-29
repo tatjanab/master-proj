@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
-import { Product } from "../types/ProductType";
+import { Link } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
@@ -9,35 +6,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import useRelatedProducts from "../hooks/useRelatedProducts";
 
 function RelatedProducts() {
-  const { categoryId, productId = "1" } = useParams<{
-    categoryId: string;
-    productId: string;
-  }>();
-
-  const getRelatedProducts = async () => {
-    const response = await fetch(
-      "https://master-shop-53976-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
-    );
-
-    const data = await response.json();
-    console.log("id " + categoryId);
-
-    console.log("related products");
-
-    return data.filter(
-      (product: Product) =>
-        product.category.toLowerCase() === categoryId?.toLowerCase() &&
-        parseInt(product.id) !== parseInt(productId),
-    );
-  };
-
-  const { data: relatedProducts, isError } = useQuery<Product[]>({
-    queryFn: getRelatedProducts,
-    queryKey: ["related-products"],
-    staleTime: Infinity, //data will never be considered stale
-  });
+  const { categoryId, relatedProducts, isError } = useRelatedProducts();
 
   if (isError) {
     return <h2>No related products found</h2>;
