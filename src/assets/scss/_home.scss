@@ -2,7 +2,6 @@
   background-image: url(../images/hero.jpeg);
   background-position: center center;
   background-size: cover;
-  height: 600px;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -24,7 +23,6 @@
 }
 
 .featured-item {
-  height: 400px;
   width: 100%;
   display: block;
 
@@ -73,10 +71,6 @@
   justify-content: flex-end;
   align-items: flex-start;
   padding-bottom: 50px;
-
-  h2 {
-    font-size: 35px;
-  }
 }
 
 .split-section {
@@ -99,5 +93,13 @@
     background-size: cover;
     height: 80%;
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    height: auto;
+    padding-top: 50px;
+    align-items: center;
   }
 }
