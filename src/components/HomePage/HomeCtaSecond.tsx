@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function HomeCtaSecond() {
   return (
-    <div className='my-16 flex flex-col items-center'>
-      <h1 className='text-4xl'>KEEP-FOREVER QUALITY</h1>
+    <div className='my-16 flex flex-col items-center px-3 text-center'>
+      <h1 className='md:text-4xl text-xl'>KEEP-FOREVER QUALITY</h1>
       <p className='uppercase mt-2'>
         Find pieces crafted from exquisite materials, built to last.
       </p>

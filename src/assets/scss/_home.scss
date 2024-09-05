@@ -2,7 +2,6 @@
   background-image: url(../images/hero.jpeg);
   background-position: center center;
   background-size: cover;
-  height: 600px;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -24,7 +23,6 @@
 }
 
 .featured-item {
-  height: 400px;
   width: 100%;
   display: block;
 
@@ -73,15 +71,9 @@
   justify-content: flex-end;
   align-items: flex-start;
   padding-bottom: 50px;
-
-  h2 {
-    font-size: 35px;
-  }
 }
 
 .split-section {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   row-gap: 30px;
   height: 120vh;
@@ -90,14 +82,20 @@
     background-image: url(../images/bestsell.jpeg);
     background-position: center center;
     background-size: cover;
-    height: 100%;
   }
 
   .img-right {
     background-image: url(../images/rugs.jpeg);
     background-position: center bottom;
     background-size: cover;
-    height: 80%;
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    height: auto;
+    padding-top: 50px;
+    align-items: center;
   }
 }
