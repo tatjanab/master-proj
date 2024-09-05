@@ -74,8 +74,6 @@
 }
 
 .split-section {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   row-gap: 30px;
   height: 120vh;
@@ -84,14 +82,12 @@
     background-image: url(../images/bestsell.jpeg);
     background-position: center center;
     background-size: cover;
-    height: 100%;
   }
 
   .img-right {
     background-image: url(../images/rugs.jpeg);
     background-position: center bottom;
     background-size: cover;
-    height: 80%;
     margin-top: 40px;
   }
 }
