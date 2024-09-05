@@ -26,3 +26,25 @@
     width: 20px;
   }
 }
+.mobile-menu {
+  .menu-items {
+    position: absolute;
+    background-color: #fff;
+    top: 45px;
+    width: 100vw;
+    right: 0;
+    padding: 20px;
+  }
+}
+
+.menu-icon {
+  border: solid 1px #999;
+  padding: 5px;
+  img {
+    height: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
