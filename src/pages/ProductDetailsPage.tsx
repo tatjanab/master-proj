@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import ProductItem from "../components/ProductItem";
 import ProductItemLoader from "../components/ProductItemLoader";
 
@@ -13,12 +13,12 @@ function ProductDetails() {
   return (
     <>
       <Header />
-      <div className='px-10 bg-gray-100 z-50 w-full py-8'>
+      <div className='z-50 w-full bg-gray-100 px-10 py-8'>
         {isLoading && <ProductItemLoader />}
         {isError && <ErrorDisplay />}
         {productDetails && <ProductItem product={productDetails} />}
       </div>
-      <div className='px-10 py-5 mb-2'>
+      <div className='mb-2 px-10 py-5'>
         {isLoading ? <RelatedProductLoader /> : <RelatedProducts />}
       </div>
     </>

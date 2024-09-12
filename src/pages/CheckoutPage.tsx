@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 
 type FormFields = {
   name: string;
@@ -14,7 +14,7 @@ function CheckoutPage() {
   return (
     <>
       <Header />
-      <div className='px-7 pt-5 bg-gray-100 w-full min-h-screen flex flex-row'>
+      <div className='flex min-h-screen w-full flex-row bg-gray-100 px-7 pt-5'>
         <div className='shipping-form mr-4'>
           <form noValidate className='flex flex-col gap-y-2'>
             <input
