@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import useProductsByCategory from "../hooks/useProductsByCategory";
 import CategoryContent from "../components/CategoryContent";
 import Search from "../components/Search";
@@ -13,8 +13,8 @@ function ProductCategory() {
   return (
     <>
       <Header />
-      <div className='px-10 z-50 w-full'>
-        <div className='flex flex-row justify-between items-center mt-8'>
+      <div className='z-50 w-full px-10'>
+        <div className='mt-8 flex flex-row items-center justify-between'>
           <h5>
             Shop all products for{" "}
             <span className='font-bold uppercase'>{categoryTitle}</span>

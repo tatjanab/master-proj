@@ -1,5 +1,5 @@
 import HeroSection from "../components/HomePage/HeroSection";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import HomeFeaturedSection from "../components/HomePage/HomeFeaturedSection";
 import HomeCta from "../components/HomePage/HomeCta";
 import HomeSplitSection from "../components/HomePage/HomeSplitSection";
