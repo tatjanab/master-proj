@@ -66,7 +66,6 @@ function CartPage() {
                   Go to Checkout
                 </Link>
               </div>
-
               <div className='mt-2 flex w-full grow md:mt-0 md:w-1/4'>
                 <CartPaymentSummary />
               </div>
