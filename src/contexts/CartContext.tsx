@@ -68,7 +68,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         </div>
       ),
       description: (
-        <a href='/cart' className='block mt-2 underline underline-offset-4'>
+        <a href='/cart' className='mt-2 block underline underline-offset-4'>
           Go to cart
         </a>
       ),

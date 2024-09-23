@@ -14,12 +14,12 @@ function ProductCategory() {
     <>
       <Header />
       <div className='z-50 w-full px-10'>
-        <div className='mt-8 flex flex-row items-center justify-between'>
+        <div className='mt-8 flex flex-col items-center justify-between lg:flex-row'>
           <h5>
             Shop all products for{" "}
             <span className='font-bold uppercase'>{categoryTitle}</span>
           </h5>
-          <div className='w-1/5'>
+          <div className='mt-2 w-full lg:mt-0 lg:w-1/5'>
             <Search searchParams={search} setSearchParams={setSearchParams} />
           </div>
         </div>

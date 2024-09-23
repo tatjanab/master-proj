@@ -20,7 +20,7 @@ function MobileHeader({ categories }) {
           ></Link>
         </div>
         <div className='menu-icon' onClick={toggleMenu}>
-          <img src='./../src/assets/images/menu.svg' />
+          <img src='./../../src/assets/images/menu.svg' />
         </div>
       </div>
 

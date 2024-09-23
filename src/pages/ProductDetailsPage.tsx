@@ -13,7 +13,7 @@ function ProductDetails() {
   return (
     <>
       <Header />
-      <div className='z-50 w-full bg-gray-100 px-10 py-8'>
+      <div className='z-50 w-full bg-gray-100 lg:px-10 lg:py-8'>
         {isLoading && <ProductItemLoader />}
         {isError && <ErrorDisplay />}
         {productDetails && <ProductItem product={productDetails} />}
