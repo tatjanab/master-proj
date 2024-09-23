@@ -21,6 +21,7 @@ function useRelatedProducts() {
   const { data: relatedProducts, isError } = useQuery<Product[]>({
     queryKey: ["related-products"],
     queryFn: getRelatedProducts,
+    staleTime: Infinity,
   });
 
   return { categoryId, relatedProducts, isError };

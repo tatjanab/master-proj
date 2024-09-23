@@ -14,16 +14,11 @@
 
   .table-image {
     margin-right: 15px;
-
-    img {
-      height: 120px;
-    }
   }
 }
 
 .table-item {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
 

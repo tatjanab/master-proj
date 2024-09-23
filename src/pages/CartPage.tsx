@@ -33,7 +33,7 @@ function CartPage() {
     <>
       <Header />
       <div className='z-50 min-h-screen w-full bg-gray-100 px-2 pt-5'>
-        <div className='flex w-full flex-row gap-x-2'>
+        <div className='flex w-full flex-col gap-x-2 md:flex-row'>
           {cartItems.length === 0 ? (
             <div className='mt-10 flex w-full flex-col items-center justify-center text-center'>
               <MdOutlineRemoveShoppingCart className='mb-5 text-4xl' />
@@ -47,8 +47,8 @@ function CartPage() {
               </Link>
             </div>
           ) : (
-            <div className='flex w-full flex-row gap-x-2'>
-              <div className='table w-3/4'>
+            <div className='flex w-full flex-col md:flex-row md:gap-x-2'>
+              <div className='table w-full md:w-3/4'>
                 {cartItems.map((cartItem) => (
                   <CartTable
                     key={cartItem.id}
@@ -66,8 +66,7 @@ function CartPage() {
                   Go to Checkout
                 </Link>
               </div>
-
-              <div className='flex w-1/4 grow'>
+              <div className='mt-2 flex w-full grow md:mt-0 md:w-1/4'>
                 <CartPaymentSummary />
               </div>
             </div>

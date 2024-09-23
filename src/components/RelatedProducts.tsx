@@ -18,7 +18,7 @@ function RelatedProducts() {
   return (
     <div className='w-full'>
       <Carousel>
-        <div className='flex flex-row justify-between mb-3'>
+        <div className='mb-3 flex flex-row justify-between'>
           <h2 className='text-lg'>People also viewed:</h2>
           <div>
             <CarouselPrevious />
@@ -27,11 +27,11 @@ function RelatedProducts() {
         </div>
         <CarouselContent className='flex flex-row'>
           {relatedProducts?.map((product) => (
-            <CarouselItem className='basis-1/4' key={product.id}>
+            <CarouselItem className='basis-1/2 lg:basis-1/4' key={product.id}>
               <Link to={`/products/${categoryId}/${product.id}`}>
                 <div>
                   <img src={product.image} alt='product image' />
-                  <p className='font-bold text-xs text-gray-500 my-1'>
+                  <p className='my-1 text-xs font-bold text-gray-500'>
                     {product.title}
                   </p>
                   <p>

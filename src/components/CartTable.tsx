@@ -24,11 +24,11 @@ function CartTable({
   // const { handleProductQuantityChange } = useContext(CartContext);
 
   return (
-    <div className='table-row'>
-      <div className='table-image'>
-        <img src={image} alt={title} />
+    <div className='table-row flex-col sm:flex-row'>
+      <div className='table-image w-full sm:w-1/2'>
+        <img src={image} alt={title} className='w-auto' />
       </div>
-      <div className='table-item'>
+      <div className='table-item flex-col sm:flex-row'>
         <div className='table-left'>
           <h2>{title}</h2>
           <p>
@@ -62,7 +62,7 @@ function CartTable({
               }}
               className='delete-btn mt-5'
             >
-              <CiCircleRemove className='flex self-center mr-1' />{" "}
+              <CiCircleRemove className='mr-1 flex self-center' />{" "}
               <span>Remove</span>
             </button>
           </div>
