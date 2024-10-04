@@ -14,7 +14,13 @@ export const CategoriesContext = createContext<
 >(undefined);
 
 export const useCategoriesContext = () => {
-  useContext(CategoriesContext);
+  const context = useContext(CategoriesContext);
+  if (context === undefined) {
+    throw new Error(
+      "useCategoriesContext must be used with a CategoryProvider",
+    );
+  }
+  return context;
 };
 type CartProviderProps = {
   children: ReactNode;
@@ -41,8 +47,8 @@ export const CategoryProvider = ({ children }: CartProviderProps) => {
     staleTime: Infinity,
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !categoriesData) return <div>Error fetching categories</div>;
+  // if (isLoading) return <p className='text-line'></p>;
+  if (isError) return <div>Error fetching categories</div>;
 
   return (
     <CategoriesContext.Provider value={{ categories: categoriesData }}>

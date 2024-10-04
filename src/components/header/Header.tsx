@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import CartIcon from "../CartIcon";
 import { useContext } from "react";
 import { CategoriesContext } from "../../contexts/CategoryContext";
-import LoadingDisplay from "../loaders/LoadingDisplay";
 import MobileHeader from "./MobileHeader";
 
 function Header() {
@@ -24,7 +23,7 @@ function Header() {
             className='hidden grow basis-full uppercase md:block'
           >
             <div className='mt-0 flex flex-row items-center justify-end gap-5'>
-              {!categories && <LoadingDisplay />}
+              {!categories && <p className='text-line w-1/3'></p>}
               {categories &&
                 categories.map((category) => (
                   <Link
