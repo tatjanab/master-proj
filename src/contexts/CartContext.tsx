@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { useToast } from "../ui/use-toast";
+import { useMemo } from "react";
 import {
   CartContextType,
   handleAddToCart,
@@ -23,24 +24,27 @@ export const CartContext = createContext<CartContextType | undefined>(
 );
 
 export const useCartContext = () => {
-  useContext(CartContext);
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error("useCartContext must be used within a CartProvider");
+  }
+  return context;
 };
+
 // Provider component
 export const CartProvider = ({ children }: CartProviderProps) => {
   const { toast } = useToast();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [totalPayment, setTotalPayment] = useState(0);
 
   useEffect(() => {
     fetchCart();
   }, []);
 
-  useEffect(() => {
+  const totalPayment = useMemo(() => {
     if (!cartItems) return;
-
-    const cartTotal = cartItems.reduce((acc, item) => acc + item.totalPrice, 0);
-    const finalTotal = parseFloat(cartTotal.toFixed(2));
-    setTotalPayment(finalTotal);
+    return parseFloat(
+      cartItems.reduce((acc, item) => acc + item.totalPrice, 0).toFixed(2),
+    );
   }, [cartItems]);
 
   function fetchCart(): void {
@@ -85,18 +89,12 @@ export const CartProvider = ({ children }: CartProviderProps) => {
           ? parseInt(productQuantity, 10)
           : productQuantity;
 
-      console.log("Existing Quantity:", existingQuantity); // Verify parsed value
-      console.log("Quantity to Add:", quantityToAdd); // Verify parsed value
-
       let updatedQuantity = existingQuantity + quantityToAdd;
-      console.log("Updated Quantity:", updatedQuantity); // Check the result of the addition
 
       cart[existingItemIndex].quantity = updatedQuantity;
       cart[existingItemIndex].totalPrice = parseFloat(
         (productPrice * updatedQuantity).toFixed(2),
       );
-
-      console.log("new item " + updatedQuantity);
     } else {
       let cartItem = {
         id: productId,
@@ -107,25 +105,17 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         image: productImageUrl,
         totalPrice: parseFloat((productPrice * productQuantity).toFixed(2)),
       };
-
-      console.log(cartItem);
-
-      console.log("new item aa " + cartItem.title);
-
       cart.push(cartItem);
     }
 
-    console.log(cart);
     localStorage.setItem("cart", JSON.stringify(cart));
     setCartItems(cart);
   };
 
   function removeItemFromCart(title: string) {
     const updatedCartItems = cartItems.filter((item) => item.title !== title);
-    console.log("Updated cart items:", updatedCartItems);
     localStorage.setItem("cart", JSON.stringify(updatedCartItems));
 
-    console.log("item removed with title" + title);
     setCartItems(updatedCartItems);
   }
 
@@ -157,7 +147,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         handleAddToCart,
         handleProductQuantityChange,
         removeItemFromCart,
-        // productQuantty,
         totalPayment,
       }}
     >
