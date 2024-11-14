@@ -1,12 +1,21 @@
-function Callback({ getColor }: { getColor: (color: string) => void }) {
+type CallbackProps = {
+  handleColor: (color: string) => void;
+};
+
+function Callback({ handleColor }: CallbackProps) {
+  const handleColorChange = (e) => {
+    handleColor(e.target.value);
+  };
+
   return (
     <div>
       <h2>Change the box color here: </h2>
       <input
-        onChange={(e) => getColor(e.target.value)}
         type='text'
         name='text'
         id='color'
+        onChange={handleColorChange}
+        style={{ color: "black" }}
       />
     </div>
   );
