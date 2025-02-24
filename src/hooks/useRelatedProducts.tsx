@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { Product } from "../types/ProductType";
 import useProductsByCategory from "./useProductsByCategory";
+import { useMemo } from "react";
 
 function useRelatedProducts() {
   const { categoryId, productId = "1" } = useParams<{
@@ -10,21 +10,17 @@ function useRelatedProducts() {
   }>();
   const { products } = useProductsByCategory(categoryId);
 
-  const getRelatedProducts = async () => {
+  const relatedProducts = useMemo(() => {
+    if (!products) return [];
+
     return products?.filter(
       (product: Product) =>
         product.category.toLowerCase() === categoryId?.toLowerCase() &&
         parseInt(product.id) !== parseInt(productId),
     );
-  };
+  }, [products, categoryId, productId]);
 
-  const { data: relatedProducts, isError } = useQuery<Product[]>({
-    queryKey: ["related-products"],
-    queryFn: getRelatedProducts,
-    staleTime: Infinity,
-  });
-
-  return { categoryId, relatedProducts, isError };
+  return { categoryId, relatedProducts };
 }
 
 export default useRelatedProducts;

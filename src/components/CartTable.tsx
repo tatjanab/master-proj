@@ -21,8 +21,6 @@ function CartTable({
   removeItemFromCart,
   setItemQuantity,
 }: CardTableProps) {
-  // const { handleProductQuantityChange } = useContext(CartContext);
-
   return (
     <div className='table-row flex-col sm:flex-row'>
       <div className='table-image w-full sm:w-1/2'>
@@ -54,7 +52,6 @@ function CartTable({
               <option value='5'>5</option>
             </select>
           </div>
-          {/* <p className='item-quantity'>qty: {quantity}</p> */}
           <div>
             <button
               onClick={() => {
