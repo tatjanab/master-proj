@@ -12,7 +12,6 @@ function CartPage() {
   const handleProductQuantityChange = useCartStore(
     (state) => state.handleProductQuantityChange,
   );
-
   useEffect(() => {
     useCartStore.getState().fetchCart();
   }, []);
@@ -47,9 +46,7 @@ function CartPage() {
                     totalPrice={cartItem.totalPrice}
                     image={cartItem.image}
                     removeItemFromCart={removeItemFromCart}
-                    setItemQuantity={(newQuantity: number) =>
-                      handleProductQuantityChange(cartItem.title, newQuantity)
-                    }
+                    setItemQuantity={handleProductQuantityChange}
                   />
                 ))}
                 <Link to='/checkout' className='button-main thin mt-5'>

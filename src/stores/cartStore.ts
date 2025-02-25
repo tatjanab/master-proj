@@ -46,15 +46,17 @@ export const useCartStore = create<CartStore>()(
           );
 
           if (existingItem) {
-            existingItem.quantity += product.quantity;
+            existingItem.quantity =
+              (existingItem.quantity || 0) + (product.quantity || 1);
             existingItem.totalPrice = parseFloat(
               (existingItem.quantity * existingItem.price).toFixed(2),
             );
           } else {
             cart.push({
               ...product,
+              quantity: product.quantity || 1,
               totalPrice: parseFloat(
-                (product.price * product.quantity).toFixed(2),
+                (product.price * (product.quantity || 1)).toFixed(2),
               ),
             });
           }

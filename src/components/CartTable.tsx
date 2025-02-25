@@ -3,12 +3,12 @@ import { CiCircleRemove } from "react-icons/ci";
 type CardTableProps = {
   title: string;
   price: number;
-  currency: string;
   quantity: number;
+  currency: string;
   totalPrice: number;
   image: string;
-  removeItemFromCart: any;
-  setItemQuantity: any;
+  removeItemFromCart: (title: string) => void;
+  setItemQuantity: (title: string, quantity: number) => void;
 };
 
 function CartTable({
@@ -43,7 +43,9 @@ function CartTable({
               name='quantity'
               id='quantitySelection'
               value={quantity}
-              onChange={(e) => setItemQuantity(title, e.target.value)}
+              onChange={(e) =>
+                setItemQuantity(title, parseInt(e.target.value, 10))
+              }
             >
               <option value='1'>1</option>
               <option value='2'>2</option>

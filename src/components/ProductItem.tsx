@@ -15,17 +15,17 @@ const ProductItem = memo(function ProductItem({
   const handleProductQuantityChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ): void => {
-    setProductQuantity(Number(event.target.value)); // ✅ Ensure quantity is a number
+    setProductQuantity(Number(event.target.value)); // Ensure quantity is a number
   };
 
   const { toast } = useToast();
 
   const onAddToCart = () => {
-    // ✅ Pass updated quantity when adding to cart
+    // Pass updated quantity when adding to cart
     handleAddToCart({
       ...product,
       quantity: productQuantity,
-      totalPrice: parseFloat((product.price * productQuantity).toFixed(2)), // ✅ Ensure total price updates correctly
+      totalPrice: parseFloat((product.price * productQuantity).toFixed(2)), // Ensure total price updates correctly
     });
     toast({
       title: (
