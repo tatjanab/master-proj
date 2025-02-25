@@ -5,7 +5,7 @@ import HomeCta from "../components/HomePage/HomeCta";
 import HomeSplitSection from "../components/HomePage/HomeSplitSection";
 import HomeCtaSecond from "../components/HomePage/HomeCtaSecond";
 import Footer from "../components/Footer";
-import TestCounter from "../components/TestCounter";
+// import TestCounter from "../components/TestCounter";
 
 function Homepage() {
   return (
@@ -14,7 +14,7 @@ function Homepage() {
       <div className='main-container'>
         <HeroSection />
         <HomeFeaturedSection />
-        <TestCounter />
+        {/* <TestCounter /> */}
         <HomeCta />
         <HomeCtaSecond />
         <HomeSplitSection />
