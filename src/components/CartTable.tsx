@@ -3,12 +3,12 @@ import { CiCircleRemove } from "react-icons/ci";
 type CardTableProps = {
   title: string;
   price: number;
-  currency: string;
   quantity: number;
+  currency: string;
   totalPrice: number;
   image: string;
-  removeItemFromCart: any;
-  setItemQuantity: any;
+  removeItemFromCart: (title: string) => void;
+  setItemQuantity: (title: string, quantity: number) => void;
 };
 
 function CartTable({
@@ -21,8 +21,6 @@ function CartTable({
   removeItemFromCart,
   setItemQuantity,
 }: CardTableProps) {
-  // const { handleProductQuantityChange } = useContext(CartContext);
-
   return (
     <div className='table-row flex-col sm:flex-row'>
       <div className='table-image w-full sm:w-1/2'>
@@ -45,7 +43,9 @@ function CartTable({
               name='quantity'
               id='quantitySelection'
               value={quantity}
-              onChange={(e) => setItemQuantity(title, e.target.value)}
+              onChange={(e) =>
+                setItemQuantity(title, parseInt(e.target.value, 10))
+              }
             >
               <option value='1'>1</option>
               <option value='2'>2</option>
@@ -54,7 +54,6 @@ function CartTable({
               <option value='5'>5</option>
             </select>
           </div>
-          {/* <p className='item-quantity'>qty: {quantity}</p> */}
           <div>
             <button
               onClick={() => {

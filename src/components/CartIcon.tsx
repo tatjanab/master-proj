@@ -1,12 +1,20 @@
-import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
-
+import { useCartStore } from "../stores/cartStore";
+import { CartItem } from "../types/CartType";
 function CartIcon() {
-  const { cartItems } = useContext(CartContext);
+  const cartItems = useCartStore((state) => state.cartItems);
 
-  const totalItemsInCart = cartItems.reduce((acc: number, product) => {
-    return parseInt(acc + (product.quantity || 0));
-  }, 0);
+  const totalItemsInCart = cartItems.reduce(
+    (acc: number, product: CartItem) => {
+      // Ensure quantity is treated as a number
+      const quantity =
+        typeof product.quantity === "string"
+          ? parseInt(product.quantity, 10)
+          : product.quantity || 0;
+
+      return acc + quantity;
+    },
+    0,
+  );
 
   return (
     <>

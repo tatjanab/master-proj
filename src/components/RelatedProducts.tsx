@@ -9,11 +9,7 @@ import {
 import useRelatedProducts from "../hooks/useRelatedProducts";
 
 function RelatedProducts() {
-  const { categoryId, relatedProducts, isError } = useRelatedProducts();
-
-  if (isError) {
-    return <h2>No related products found</h2>;
-  }
+  const { categoryId, relatedProducts } = useRelatedProducts();
 
   return (
     <div className='w-full'>
